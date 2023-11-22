@@ -4,9 +4,22 @@ import Home from './components/Home/Home';
 import Time from './components/Time/Time';
 import Partidas from './components/Partidas/Partidas';
 import Login from './components/Login/Login';
+import useToken from './useToken';
 
+const { token, setToken } = useToken();
+
+function setToken(userToken) {
+  sessionStorage.setItem('token', JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem('token');
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token
+}
+ 
 function Rotas() {
-  const [token, setToken] = useState();
+  const token = getToken();
 
   if(!token) {
     return <Login setToken={setToken} />
