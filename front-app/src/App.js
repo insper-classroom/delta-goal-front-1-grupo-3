@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Rotas from './Rotas';
 import './App.css';
 
 function App() {
   return (
-    <h1>Oi</h1>
+    <div className="wrapper">
+      <Rotas />
+    </div>
     );
 }
 

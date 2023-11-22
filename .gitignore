@@ -1,1 +1,4 @@
 .venv
+front-app/.venv
+front-app/node_modules
+express/node_modules
