@@ -1,28 +1,45 @@
-/* style/Header.css */
+/* Header.css */
+
 .header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #1f1f1f; /* Escolha a cor que preferir */
-  z-index: 1000; /* Garante que o header fique acima de outros elementos */
-}
-
-.header nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.header nav a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 20px;
-}
-
-.header nav a:hover {
-  background-color: #ffffff; /* Efeito de hover */
-  color: black
-}
+    background-color: #20232a; /* ou qualquer outra cor que você preferir */
+    padding: 35px 0; /* Aumenta o padding vertical para aumentar a altura */
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); /* Adiciona uma sombra para profundidade */
+    
+  }
+  
+  .header ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header li {
+    padding: 0 100px; /* Espaçamento entre os itens da lista */
+  }
+  
+  .header a {
+    color: white; /* Cor inicial do texto */
+    font-weight: bold; /* Texto em negrito */
+    text-decoration: none; /* Remove o sublinhado */
+    transition: color 0.9s ease; /* Transição suave da cor */
+    letter-spacing: none; /* Espaçamento normal, ajuste como preferir */
+    display: inline-block; /* Necessário para aplicar a transição */
+    background-image: linear-gradient(to right, white, white); /* Fundo gradiente inicial invisível */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; /* Torna o texto transparente para que o gradiente seja visível */
+    font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Estilos adicionais para hover e foco podem ser adicionados */
+  .header a:hover,
+  .header a:focus {
+    background-image: linear-gradient(to right, rgb(0, 251, 255), rgb(0, 173, 147));
+    text-decoration: none; /* Sublinha o texto ao passar o mouse ou focar */
+  }
