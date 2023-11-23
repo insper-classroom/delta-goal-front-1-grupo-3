@@ -1,0 +1,28 @@
+/* style/Header.css */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #1f1f1f; /* Escolha a cor que preferir */
+  z-index: 1000; /* Garante que o header fique acima de outros elementos */
+}
+
+.header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+}
+
+.header nav a:hover {
+  background-color: #ffffff; /* Efeito de hover */
+  color: black
+}
