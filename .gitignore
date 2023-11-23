@@ -1,0 +1,5 @@
+express/node_modules
+front-end/node_modules
+front-end/.venv
+.venv
+express/.venv
