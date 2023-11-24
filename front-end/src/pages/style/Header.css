@@ -8,7 +8,6 @@
     justify-content: space-around;
     align-items: center;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); /* Adiciona uma sombra para profundidade */
-    
   }
   
   .header ul {
@@ -36,10 +35,4 @@
     font-size: 25px;
     font-family: 'Poppins', sans-serif;
   }
-  
-  /* Estilos adicionais para hover e foco podem ser adicionados */
-  .header a:hover,
-  .header a:focus {
-    background-image: linear-gradient(to right, rgb(0, 251, 255), rgb(0, 173, 147));
-    text-decoration: none; /* Sublinha o texto ao passar o mouse ou focar */
-  }
+

@@ -1,0 +1,106 @@
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas de tamanho igual */
+    gap: 20px; /* Espaçamento entre as colunas */
+    margin: 20px;
+}
+
+.visao-geral, .lances {
+    display: grid;
+    gap: 10px;
+}
+
+.destaques, .envolvidos, .desfechos, .lista-lances {
+    padding: 10px; /* Espaçamento interno */
+    height: 100px; /* Altura exemplo, ajuste conforme necessário */
+    border: 2px solid #ccc; /* Borda para o container */
+}
+
+/* Simula um campo de futebol */
+.campo-futebol {
+
+    position: relative;
+    width: 900px; /* Adjust as needed */
+    height: 600px; /* Adjust as needed */
+    background-color: #4e9a06; /* Field green */
+    margin: 30px auto;
+}
+.goal {
+    position: absolute;
+    width: 40px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    background-color: #4e9a06; /* Goals are white */
+    border: 3px solid #ffffff; /* White lines for the goal border */
+  }
+
+.field {
+    position: absolute;
+    width: 120px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    background-color: transparent; /* Transparent background */
+    border: 3px solid #ffffff; /* White lines for the field border */
+  }
+  
+.top-goal {
+    right: 8px; /* Half outside the field */
+    top: calc(50% - 50px); /* Centered */
+  }
+  
+.bottom-goal {
+    left: 8px; /* Half outside the field */
+    bottom: calc(50% - 50px); /* Centered */
+  }
+
+.top-area {
+    right: 8px; /* Half outside the field */
+    top: calc(50% - 150px); /* Centered */
+  }
+
+.bottom-area {
+    left: 8px; /* Half outside the field */
+    bottom: calc(50% - 150px); /* Centered */
+}
+  
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    background-color: #4e9a06; 
+    border: 3px solid #ffffff; 
+  }
+
+.middle-line {
+    position: absolute;
+    left: 50%; /* Centered */
+    height: 600px;
+    width: 2px;
+    background-color: #ffffff;
+  }
+
+.lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 880px; 
+    height: 580px; 
+    background-color: transparent; 
+    border: 2.5px solid #ffffff; 
+  }
+/* Container para o vídeo */
+.video-container {
+    border: 2px solid #ccc; /* Borda para o vídeo */
+    padding: 10px; /* Espaçamento interno */
+    height: 200px; /* Altura exemplo, ajuste conforme necessário */
+}
+
+video {
+    width: 100%; /* O vídeo preenche o container */
+    height: 100%; /* Ajusta a altura para preencher o container */
+}
