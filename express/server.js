@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const User = require('./db/userModel');
 const auth = require('./auth.js');
+const cors = require('cors');
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -25,6 +26,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors());
 
 app.post("/register", (request, response) => {
   bcrypt
