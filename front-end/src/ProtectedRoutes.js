@@ -1,15 +1,16 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, Navigate, Outlet } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import React from 'react';
 const cookies = new Cookies();
 
-export default function ProtectedRoute({ children }) {
-  const navigate = useNavigate();
+export default function ProtectedRoutes() {
   const isAuthenticated = cookies.get('token');
+  const location = useLocation();
 
-  if (!isAuthenticated) {
-    navigate('/');
-    return null;
-  }
+  return (
+    isAuthenticated ? 
+        <Outlet /> 
+      : <Navigate to={{ pathname: '/login', state: { from: location } }} />
+      );
 
-  return children;
 }

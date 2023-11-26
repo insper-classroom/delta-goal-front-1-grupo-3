@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style/Header.css'; // Assuma que você tem um arquivo CSS para estilizar o header
+import './style/Header.css'; 
+import Logout from './Logout';
 
 const Header = () => {
   return (
     <header className="header">
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/home">Home</Link></li>
           <li><Link to="/time">Time</Link></li>
           <li><Link to="/partidas">Partidas</Link></li>
+          <li><Logout /></li>
         </ul>
       </nav>
     </header>
