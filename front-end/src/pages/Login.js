@@ -1,51 +1,66 @@
-import './style/Login.css';
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
+import './style/Login.css'; 
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
-async function loginUser(credentials) {
-    return fetch('http://localhost:8080/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
 
-   export default function Login({ setToken }) {
-    const [username, setUserName] = useState();
-    const [password, setPassword] = useState();
-  
-    const handleSubmit = async e => {
-      e.preventDefault();
-      const token = await loginUser({
-        username,
-        password
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8080/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log(response);
+        cookies.set("token", response.data.token, { path: "/" });
+        window.location.href = "/home";
+        sessionStorage.setItem("token", response.data.token);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      setToken(token);
-    }
-  
-    return(
-      <div className="login-wrapper">
-        <h1>Please Log In</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <p>Username</p>
-            <input type="text" onChange={e => setUserName(e.target.value)} />
-          </label>
-          <label>
-            <p>Password</p>
-            <input type="password" onChange={e => setPassword(e.target.value)} />
-          </label>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
-    )
   }
-  
-  Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-  };
+
+  return (
+    <div className='login-wrapper'>
+      <Form onSubmit={(e)=>handleSubmit(e)}>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Email: </Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Digite seu email"
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Senha: </Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Senha"
+          />
+        </Form.Group>
+
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => handleSubmit(e)}
+        >
+          Login
+        </Button>
+      </Form>
+    </div>
+  );
+}
