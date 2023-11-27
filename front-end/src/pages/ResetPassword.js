@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from './Header';
+import NotHeader from './NotHeader';
 import './style/Partidas.css';
 
 export default function ResetPassword() {
@@ -37,7 +37,7 @@ export default function ResetPassword() {
 
   return (
     <div>
-      <Header />
+      <NotHeader />
       <div className="redefinir-container">
         <h2>Redefinir Senha</h2>
         <div className="form-group">

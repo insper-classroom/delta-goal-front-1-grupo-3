@@ -3,12 +3,14 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import './style/Login.css'; 
 import Cookies from 'universal-cookie';
+import { useNavigate } from 'react-router-dom';
 const cookies = new Cookies();
 
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,6 +61,13 @@ export default function Login() {
           onClick={(e) => handleSubmit(e)}
         >
           Login
+        </Button>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={(e) => navigate('/reset-password')}
+        >
+          Esqueci minha senha
         </Button>
       </Form>
     </div>
