@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_pymongo import PyMongo
 import resend
 
-resend.api_key = "re_dWBpLb7w_CYrAjyhVpTqfB1LTEkAne7fG"
+resend.api_key = "re_DhWP2A5m_H2zjoUTNryHxFru9JrPY3g3M"
 
 app = Flask(__name__)
 CORS(app)
@@ -47,15 +47,35 @@ def auth_endpoint():
 
 @app.route('/reset-password', methods=['POST'])
 def reset_password():
-    data = request.get_json()
+    data = request.json
     email = data.get('email')
+    print(email)
     user = mongo.db.users.find_one({'email': email})
     if user:
         reset_token = create_access_token(identity=str(user["_id"]), expires_delta=False)
-        reset_link = f'http://locahost:8080/{reset_token}'
+        reset_link = f'http://localhost:8080/altera_senha?token={reset_token}'
         r = resend.Emails.send({
             "from": "onboarding@resend.dev",
-            "to": email,
+            "to": "dev@jonasbp.com",
+            "subject": "Password Reset",
+            "text": f"Click on the link to reset your password: {reset_link}"
+        })
+        return jsonify({"message": "Email sent with instructions to reset your password"}), 200
+    else:
+        return jsonify({"message": "User not found"}), 404
+
+@app.route('/altera-senha', methods=['POST'])
+def reset_password():
+    data = request.json
+    email = data.get('email')
+    print(email)
+    user = mongo.db.users.find_one({'email': email})
+    if user:
+        reset_token = create_access_token(identity=str(user["_id"]), expires_delta=False)
+        reset_link = f'http://localhost:8080/altera_senha?token={reset_token}'
+        r = resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": "dev@jonasbp.com",
             "subject": "Password Reset",
             "text": f"Click on the link to reset your password: {reset_link}"
         })

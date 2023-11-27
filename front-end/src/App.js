@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import ProtectedRoutes from './ProtectedRoutes';
 import NotFound from './pages/NotFound';
 import ResetPassword from './pages/ResetPassword';
+import AlteraSenha from './pages/AlteraSenha';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -23,6 +24,7 @@ function App() {
             element={isAuthenticated() ? <Navigate to="/home" /> : <Navigate to="/login" />}
           />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/altera-senha" element={<AlteraSenha />} />
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}> 
             <Route path="/home" element={<Home />} />
