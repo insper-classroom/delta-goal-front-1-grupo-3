@@ -53,7 +53,7 @@ def reset_password():
     user = mongo.db.users.find_one({'email': email})
     if user:
         reset_token = create_access_token(identity=str(user["_id"]), expires_delta=False)
-        reset_link = f'http://localhost:8080/altera_senha?token={reset_token}'
+        reset_link = f'http://localhost:3000/altera-senha?email={email}&token={reset_token}'
         r = resend.Emails.send({
             "from": "onboarding@resend.dev",
             "to": "dev@jonasbp.com",
@@ -71,6 +71,7 @@ def altera_senha():
         data = request.json
 
         # Obtém a senha e o token do corpo da requisição
+        email = data.get('email')
         password = data.get('password')
         token = data.get('token')
 
