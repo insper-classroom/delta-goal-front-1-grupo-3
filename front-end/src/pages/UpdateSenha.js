@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function AlteraSenha() {
+export default function UpdateSenha() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -16,25 +16,19 @@ export default function AlteraSenha() {
 
   const handleResetPassword = async () => {
     try {
-      // Verifique se as senhas coincidem
       if (password !== confirmPassword) {
         setErrorMessage('As senhas não coincidem.');
         return;
       }
-
-      // Obtenha o token da string de consulta da URL
       const params = new URLSearchParams(window.location.search);
       const token = params.get('token');
-
-      // Faça uma solicitação para o servidor para alterar a senha com o token
-      const response = await fetch('http://127.0.0.1:8080/altera-senha', {
-        method: 'POST',
+      const response = await fetch('http://127.0.0.1:8080/update-senha', {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ password, token }),
       });
-
       if (response.ok) {
         setSuccessMessage('Senha alterada com sucesso!');
       } else {
@@ -46,7 +40,6 @@ export default function AlteraSenha() {
       setErrorMessage('Ocorreu um erro ao processar sua solicitação.');
     }
   };
-
   return (
     <div>
       <h2>Altere Sua Senha</h2>

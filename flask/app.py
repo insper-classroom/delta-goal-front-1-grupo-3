@@ -5,8 +5,7 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 from flask_pymongo import PyMongo
 import resend
 
-resend.api_key = "re_DhWP2A5m_H2zjoUTNryHxFru9JrPY3g3M"
-
+resend.api_key = "re_BAWG9Xe9_NMeoa7c9ULB4q8tu6oGPg8Aw"
 app = Flask(__name__)
 CORS(app)
 
@@ -38,52 +37,40 @@ def login():
         return jsonify({"message": 'Login realizado com sucesso',"token": token}), 200
     else:
         return jsonify({"message": "Usuário ou senha inválidos"}), 401
-    
-@app.route('/auth-endpoint', methods=['GET'])
-@jwt_required()
-def auth_endpoint():
-    current_user = get_jwt_identity()
-    return jsonify({'message': 'You are authorized to access me', 'user': current_user}), 200
 
 @app.route('/reset-password', methods=['POST'])
 def reset_password():
+    tokens = mongo.db.tokens 
     data = request.json
     email = data.get('email')
-    print(email)
     user = mongo.db.users.find_one({'email': email})
     if user:
         reset_token = create_access_token(identity=str(user["_id"]), expires_delta=False)
-        reset_link = f'http://localhost:3000/altera-senha?email={email}&token={reset_token}'
+        reset = {'email': email, 'token': reset_token}
+        tokens.insert_one(reset)
+        reset_link = f'http://localhost:3000/update-senha?token={reset_token}'
         r = resend.Emails.send({
-            "from": "onboarding@resend.dev",
-            "to": "dev@jonasbp.com",
-            "subject": "Password Reset",
-            "text": f"Click on the link to reset your password: {reset_link}"
+            "from": "Jonasbp <jonas@mail.jonasbp.com>",
+            "to": email,
+            "subject": "Redefinição de senha",
+            "text": f"Você está recebendo esse email porque você ou alguém solicitou um link para redefinição de senha da sua conta. Caso você não tenha solicitado nada, esse email pode ser ignorado. Clique no link abaixo para redefinir a sua senha:\n{reset_link}"
         })
         return jsonify({"message": "Email sent with instructions to reset your password"}), 200
     else:
         return jsonify({"message": "User not found"}), 404
 
-@app.route('/altera-senha', methods=['POST'])
-def altera_senha():
+@app.route('/update-senha', methods=['PUT'])
+def update_senha():
     try:
-        # Recebe os dados do corpo da requisição como JSON
         data = request.json
-
-        # Obtém a senha e o token do corpo da requisição
-        email = data.get('email')
-        password = data.get('password')
         token = data.get('token')
-
-        # Lógica para alterar a senha com base no token
-        # Substitua esta lógica pela implementação real
-        # Certifique-se de validar o token e executar a alteração de senha de forma segura
-
-        # Exemplo de resposta bem-sucedida
+        hashed_password = bcrypt.generate_password_hash(data["password"]).decode("utf-8")
+        banco_token = mongo.db.tokens.find_one({'token': token})
+        if banco_token and banco_token['token'] == token:
+            mongo.db.users.update_one({'email': banco_token['email']}, {'$set': {'password': hashed_password}})
+            mongo.db.tokens.delete_one({'token': token})
         return jsonify({"message": "Senha alterada com sucesso!"}), 200
-
     except Exception as e:
-        # Em caso de erro, retorne uma mensagem de erro
         return jsonify({"error": str(e)}), 500
     
 if __name__ == "__main__":
