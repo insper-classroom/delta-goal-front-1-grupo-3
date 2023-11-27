@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button,Alert } from 'react-bootstrap';
 import axios from 'axios';
 import './style/Login.css'; 
 import Cookies from 'universal-cookie';
@@ -10,6 +10,7 @@ const cookies = new Cookies();
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -27,6 +28,7 @@ export default function Login() {
       })
       .catch((error) => {
         console.log(error);
+        setError("Credenciais não conferem. Confirme seu email e senha.");
       });
   }
 
@@ -62,6 +64,7 @@ export default function Login() {
         >
           Login
         </Button>
+        {error && <Alert variant="danger">{error}</Alert>}
         <Button
           variant="primary"
           type="submit"
