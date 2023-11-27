@@ -6,6 +6,7 @@ import Partidas from './pages/Partidas';
 import Login from './pages/Login';
 import ProtectedRoutes from './ProtectedRoutes';
 import NotFound from './pages/NotFound';
+import ResetPassword from './pages/ResetPassword';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -21,6 +22,7 @@ function App() {
             path="/"
             element={isAuthenticated() ? <Navigate to="/home" /> : <Navigate to="/login" />}
           />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}> 
             <Route path="/home" element={<Home />} />
