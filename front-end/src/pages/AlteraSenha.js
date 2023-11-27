@@ -22,14 +22,17 @@ export default function AlteraSenha() {
         return;
       }
 
+      // Obtenha o token da string de consulta da URL
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+
       // Faça uma solicitação para o servidor para alterar a senha com o token
-      const token = new URLSearchParams(window.location.search).get('token');
       const response = await fetch('http://127.0.0.1:8080/altera-senha', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ password, token }),
       });
 
       if (response.ok) {
