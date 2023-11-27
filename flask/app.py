@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager, create_access_token
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_pymongo import PyMongo
 
 app = Flask(__name__)
@@ -35,6 +35,12 @@ def login():
         return jsonify({"message": 'Login realizado com sucesso',"token": token}), 200
     else:
         return jsonify({"message": "Usuário ou senha inválidos"}), 401
+    
+@app.route('/auth-endpoint', methods=['GET'])
+@jwt_required()
+def auth_endpoint():
+    current_user = get_jwt_identity()
+    return jsonify({'message': 'You are authorized to access me', 'user': current_user}), 200
     
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
