@@ -2,3 +2,4 @@ express/node_modules
 front-end/node_modules
 .venv
 venv
+__pycache__
