@@ -30,13 +30,38 @@ def register():
 @app.route("/login", methods=["POST"])
 def login():
     users = mongo.db.users
+    login_token = mongo.db.login_tokens
     data = request.get_json()
     user = users.find_one({"email": data["email"]})
     if user and bcrypt.check_password_hash(user["password"], data["password"]):
         token = create_access_token(identity=str(user["_id"]))
+        logged_in = {'email': data["email"], 'token': token}
+        login_token.insert_one(logged_in)
         return jsonify({"message": 'Login realizado com sucesso',"token": token}), 200
     else:
         return jsonify({"message": "Usuário ou senha inválidos"}), 401
+    
+@app.route("/logout", methods=['POST'])
+def logout():
+    data = request.get_json()
+    token = data.get('token')
+    user = mongo.db.login_tokens.find_one({'token': token})
+    if user:
+        mongo.db.login_tokens.delete_one({'token': token})
+        return jsonify({"message": 'Logout realizado com sucesso',"token deletado": token}), 200
+    else:
+        return jsonify({"message": 'Error'}), 500
+    
+@app.route('/verificar-login', methods=['POST'])
+def verificar_login():
+    data = request.get_json()
+    token = data.get('token')
+    user = mongo.db.login_tokens.find_one({'token': token })
+    if user:
+        return jsonify({"message": 'Autorizado'}),200
+    else:
+        return jsonify({"message": 'Não Autorizado'}), 401
+
 
 @app.route('/reset-password', methods=['POST'])
 def reset_password():
