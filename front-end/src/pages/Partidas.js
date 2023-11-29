@@ -11,14 +11,8 @@ export default function Partidas() {
         {/* Container principal para a página de Partidas */}
         <div className="visao-geral">
             <div className="campo-futebol">
-                <div class="goal top-goal"></div>
-                <div class="center-circle"></div>
-                <div class="goal bottom-goal"></div>  
-                <div class="field top-area"></div>
-                <div class="field bottom-area"></div>
-                <div class="middle-line"></div>
-                <div class="corners"></div>
-                <div class="lines"></div>
+                {/* Placeholder para o campo de futebol - substitua 'path_to_your_image.jpg' pelo caminho correto da imagem */}
+                <img src="campo.png" alt="Campo de futebol" />
             </div>
             <div className="destaques">Destaques</div>
             <div className="envolvidos">Jogadores Envolvidos</div>
