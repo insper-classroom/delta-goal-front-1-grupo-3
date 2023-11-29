@@ -1,38 +1,44 @@
-/* Header.css */
+* {font-family: 'aller2';
+  background-color: white;}
 
-.header {
-    background-color: #20232a; /* ou qualquer outra cor que você preferir */
-    padding: 35px 0; /* Aumenta o padding vertical para aumentar a altura */
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); /* Adiciona uma sombra para profundidade */
-  }
-  
-  .header ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .header li {
-    padding: 0 100px; /* Espaçamento entre os itens da lista */
-  }
-  
-  .header a {
-    color: white; /* Cor inicial do texto */
-    font-weight: bold; /* Texto em negrito */
-    text-decoration: none; /* Remove o sublinhado */
-    transition: color 0.9s ease; /* Transição suave da cor */
-    letter-spacing: none; /* Espaçamento normal, ajuste como preferir */
-    display: inline-block; /* Necessário para aplicar a transição */
-    background-image: linear-gradient(to right, white, white); /* Fundo gradiente inicial invisível */
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; /* Torna o texto transparente para que o gradiente seja visível */
-    font-size: 25px;
-    font-family: 'Poppins', sans-serif;
-  }
+@font-face {font-family: 'aller';
+  src: url(Aller_Lt.ttf);}
 
+@font-face {
+  font-family: 'aller2';
+  src: url(Aller_Bd.ttf);} 
+
+header {background-color: black; 
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);}
+
+img {height: 100px;
+  margin: 40px;
+  padding-left: 1%;
+  background-color: white;}
+
+h1 {font-family: 'aller';
+  font-size: 45px;
+  padding-top: 12%;
+  text-align: center;}
+
+button {width: 20%;
+  font-family: 'aller2';
+  border: transparent;
+  text-align: center; 
+  background-color: black;
+  font-size: 22px;}
+
+button a {background-color: black;
+  color: white;}
+
+.sair {margin-bottom: 6%;
+  margin-left: 4.5%;
+  font-size: 17px}
+
+.sair a {font-family: 'aller';}
+
+.head {margin-left: 10%}

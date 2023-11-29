@@ -1,39 +1,89 @@
-.login-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  form {
-    width: 40vh;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  form label {
-    font-weight: bold;
-  }
-  
-  form input {
-    width: 100%;
+* {font-family: 'aller';
+  background-color: white;}
+
+@font-face {font-family: 'aller';
+  src: url(Aller_Lt.ttf);}
+
+@font-face {
+  font-family: 'aller2';
+  src: url(Aller_Bd.ttf);}
+
+body {
+     overflow: hidden;
+     margin: 0;}
+
+.caixa {position: relative;}
+
+.login {
+  position: absolute;
+  padding-top: 15%;
+  padding-left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 19px;
+  background: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 30px;
+  margin-left: 35%;
+  margin-right: 35%;
+  z-index: 1;
+}
+
+h1 {font-family: 'aller2';
+  font-size: 27px;
+  background-color: transparent;}
+
+.redefinicao_senha {
+  background-color: transparent;
+  padding-bottom: 5%;}
+
+img {
+   height: 100px;
+   margin: 40px;
+  padding-left: 1%;
+  position: absolute;
+  z-index: 1;
+  background-color: transparent;}
+
+
+label {color: black;
+  padding-bottom: 2.5%;
+  padding-top: 7.5%;
+  display: flex;
+  background-color: transparent;}
+
+
+input {background-color: white;
+    border-radius: 15px;   
+    border: transparent;
     padding: 8px;
-    margin-bottom: 10px;
-  }
-  
-  form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #0056b3;
-  }
+    font-size: 17px;
+    width: 60%;
+    text-align: left;}
+
+button:hover {
+   cursor: pointer;
+   background-color: black;}
+
+ button {width: 30%;
+    border-radius: 17px; 
+    margin-top: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: black;
+    border: 1.5px solid black;
+    color: white;
+    text-align: center; 
+    font-size: 18px;}
+
+.circle {
+  position: absolute;
+  width: 2000px;
+  height: 2000px;
+  background: linear-gradient(to bottom, white, #960056, #960056);
+  border-radius: 0; 
+  z-index: 0;}
   

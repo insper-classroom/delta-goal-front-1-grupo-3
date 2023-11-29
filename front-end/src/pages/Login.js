@@ -33,46 +33,34 @@ export default function Login() {
   }
 
   return (
-    <div className='login-wrapper'>
-      <Form onSubmit={(e)=>handleSubmit(e)}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email: </Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite seu email"
+    <div className="caixa">
+      <img src="delta_goal_logo.png" alt="logo" />
+      <div className="circle"></div>
+      <div className="login">
+        <h1>LOGIN</h1>
+        <form onSubmit={handleSubmit}>
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-        </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Senha: </Form.Label>
-          <Form.Control
+          <label>Password</label>
+          <input
             type="password"
-            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Senha"
           />
-        </Form.Group>
 
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          Login
-        </Button>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => navigate('/reset-password')}
-        >
-          Esqueci minha senha
-        </Button>
-      </Form>
+          <button type="submit">Enviar</button>
+
+          <div className="redefinicao_senha">
+            <label>Esqueceu sua senha? Redefinir </label>
+            <input type="hidden" />
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

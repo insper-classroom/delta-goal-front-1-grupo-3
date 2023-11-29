@@ -5,16 +5,18 @@ import Logout from './Logout';
 
 const Header = () => {
   return (
-    <header className="header">
-      <nav>
-        <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/time">Time</Link></li>
-          <li><Link to="/partidas">Partidas</Link></li>
-          <li><Logout /></li>
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header>
+        <img src="delta_goal_logo.png" alt="logo" />
+        <button className="head"><a>Home</a></button>
+        <button className="head"><a>Início</a></button>
+        <button className="head"><a>Partidas</a></button>
+        <button className="sair"><a>Logout</a></button>
+      </header>
+      <h1>
+        Seja bem-vindo!
+      </h1>
+    </>
   );
 }
 

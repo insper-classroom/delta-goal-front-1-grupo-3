@@ -1,0 +1,45 @@
+* {font-family: 'aller2';
+    background-color: white;}
+
+@font-face {font-family: 'aller';
+    src: url(Aller_Lt.ttf);}
+ 
+ @font-face {
+    font-family: 'aller2';
+    src: url(Aller_Bd.ttf);} 
+
+label {color: white;
+    background-color: transparent;}
+ 
+button {width: 20%;
+    font-family: 'aller2';
+    border: transparent;
+    background-color: transparent;
+    color: white;
+    text-align: center; 
+    font-size: 22px;}
+
+.times {display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;}
+
+a {text-decoration: none;
+    color:black;
+    padding-top: 4.5%;
+    padding-left: 3%;
+    font-family: 'aller';
+    font-size: 25px;}
+
+h1 {padding-left: 60px;
+    padding-top: 30px;}
+
+.times img {width: 75px;
+    height: auto;}
+
+.bragantino {display: flex;
+    flex-direction: row;}
+
+.palmeiras {display: flex;
+    flex-direction: row;}
