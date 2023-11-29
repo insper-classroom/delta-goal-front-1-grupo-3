@@ -17,7 +17,6 @@ const Logout = () => {
         .then((response) => { 
             console.log(response)
             cookies.remove('token', {path: '/'});
-            sessionStorage.removeItem('token');
             navigate('/login');
         })
         .catch((error) => {

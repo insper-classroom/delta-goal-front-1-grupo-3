@@ -24,7 +24,6 @@ export default function Login() {
         console.log(response);
         cookies.set("token", response.data.token, { path: "/" });
         window.location.href = "/home";
-        sessionStorage.setItem("token", response.data.token);
       })
       .catch((error) => {
         console.log(error);
