@@ -4,41 +4,53 @@ import './style/Partidas.css';
 
 export default function Partidas() {
   const [lances, setLances] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchLances = async () => {
       try {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMTI2NDQzMiwianRpIjoiMjlkZjJkMDMtMTVkYi00MmQ4LTkzNTQtZmFhN2JjOTZjZjE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY1NjczYWEyYjhhOTdlMDg1YjE3MDQ3NSIsIm5iZiI6MTcwMTI2NDQzMiwiZXhwIjoxNzAxMjY1MzMyfQ.xONFqT9iCuJuUMeZPpT00SP17cqGLwkuhd29S5aw3oI";
-
-        const myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Authorization", `Bearer ${token}`);
-
-        const raw = JSON.stringify({
-          "jogo": "Palmeiras x Red Bull Bragantino",
-          "time": "Red Bull Bragantino"
-        });
-
-        // Substitua 'YOUR_API_ENDPOINT' pela URL correta da sua API
-        const response = await fetch("http://127.0.0.1:8080/rupturas_lista", {
+        const responseLances = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_jogadores/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
           method: 'GET',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMTI4ODEzMSwianRpIjoiYjlhNGNjNTUtNTdhMS00ZTVkLWI0ZWItMTJhMzc4NTE4ZjVlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY1Njc0YjE5ODkwZmRmZjM0MmMyYzFkYSIsIm5iZiI6MTcwMTI4ODEzMSwiZXhwIjoxNzAxMjg5MDMxfQ.1-2WisDml4jkzS44IEsBM-x_E_M03cP4DlmCa1yqUQg",
+          },
+          redirect: 'follow',
         });
 
-        if (response.ok) {
-          const data = await response.json();
+        if (responseLances.ok) {
+          const data = await responseLances.json();
+          console.log(data);
           setLances(data);
         } else {
-          console.error('Erro ao buscar lances:', response.statusText);
+          setError(`Erro ao buscar lances: ${responseLances.statusText}`);
+        }
+        const response_lista_rupturas= await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_lista/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMTI4OTAyNCwianRpIjoiYTI4ZDJjM2MtNjg0ZC00OGY1LThjYjMtMjc3Y2Y5YmFkMWI1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY1Njc0YjE5ODkwZmRmZjM0MmMyYzFkYSIsIm5iZiI6MTcwMTI4OTAyNCwiZXhwIjoxNzAxMjg5OTI0fQ.Gq9BXAdD-S9mW1h1QrXBVCJRlpNjTj0W2K7jWZnwu8Y",
+          },
+          redirect: 'follow',
+        });
+
+        if (response_lista_rupturas.ok) {
+          const data2 = await response_lista_rupturas.json();
+          console.log(data2);
+          setLances(data2);
+        } else {
+          setError(`Erro ao buscar lances: ${response_lista_rupturas.statusText}`);
         }
       } catch (error) {
-        console.error('Erro na requisição:', error);
+        setError(`Erro na requisição: ${error.message}`);
+      } finally {
+        setIsLoading(false);
       }
+    
     };
 
-    // Chama a função para buscar os lances quando o componente monta
+    // Faz todas as requisições
     fetchLances();
   }, []);
 
@@ -59,15 +71,14 @@ export default function Partidas() {
             <div className="lines"></div>
           </div>
           <div className="destaques">Destaques</div>
+          response_lista_rupturas: {JSON.stringify(lances)}
           <div className="envolvidos">Jogadores Envolvidos</div>
           <div className="desfechos">Desfechos</div>
         </div>
 
         <div className="lista-lances">
           Lista de Lances
-          {lances.map((lance) => (
-            <p key={lance.id}>{lance.descricao}</p>
-          ))}
+          data: {JSON.stringify(lances)}
         </div>
         <div className="video-container">
           {/* Placeholder para o vídeo - substitua 'path_to_your_video.mp4' pelo caminho correto do seu vídeo */}
