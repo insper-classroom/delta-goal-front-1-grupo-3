@@ -11,11 +11,8 @@ const Header = () => {
         <button className="head"><a>Home</a></button>
         <button className="head"><a>Início</a></button>
         <button className="head"><a>Partidas</a></button>
-        <button className="sair"><a>Logout</a></button>
+        <div className='sair'><Logout /></div>
       </header>
-      <h1>
-        Seja bem-vindo!
-      </h1>
     </>
   );
 }

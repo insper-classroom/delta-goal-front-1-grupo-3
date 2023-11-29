@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <h1>Delta Gol</h1>
+      <h1>
+        Seja bem-vindo!
+      </h1>
     </div>
   );
 }
