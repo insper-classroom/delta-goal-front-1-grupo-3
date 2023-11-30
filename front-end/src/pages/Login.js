@@ -16,7 +16,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/login", {
+      .post("https://sprint-deltago-5179309dcfcb.herokuapp.com/login", {
         email,
         password,
       })
