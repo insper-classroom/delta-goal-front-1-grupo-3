@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import './style/Partidas.css';
-import Cookies from 'js-cookie';
-
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default function Partidas() {
   const [lances, setLances] = useState([]);
@@ -13,7 +13,7 @@ export default function Partidas() {
     const fetchLances = async () => {
       try {
         // Obter todos os cookies do navegador
-        const token = Cookies.get('token');
+        const token = cookies.get('token');
         console.log(token)
         const response = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_jogadores/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
           method: 'GET',
