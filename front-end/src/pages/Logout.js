@@ -11,9 +11,9 @@ const Logout = () => {
     const handleLogout = (e) => {
         e.preventDefault();
         axios
-        .post(('http://localhost:8080/logout'), {
-            token 
-        })
+        .post(('https://sprint-deltago-5179309dcfcb.herokuapp.com/logout'), {"token": token}, 
+        { headers: { "Authorization": `Bearer ${token}` } }
+        )
         .then((response) => { 
             console.log(response)
             cookies.remove('token', {path: '/'});

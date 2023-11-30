@@ -7,7 +7,8 @@ const CheckToken = async () => {
       const token = cookies.get('token');
   
       if (token) {
-        const response = await axios.post('http://localhost:8080/verificar-login', { token });
+        const response = await axios.post('https://sprint-deltago-5179309dcfcb.herokuapp.com/verificar-login', { "token":token
+        }, { headers: { "Authorization": `Bearer ${token}` } });
   
         if (response.status === 200) {
           console.log('Token válido. Autorizado');
