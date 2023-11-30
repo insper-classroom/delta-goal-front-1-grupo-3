@@ -1,3 +1,16 @@
+body {
+  background-color:#727070;
+  font-family: 'Asap', sans-serif;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  margin-left: -5%;
+  padding-right: 5%;
+}
+
 .login-wrapper {
     display: flex;
     align-items: center;
@@ -5,35 +18,57 @@
     height: 100vh;
   }
   
-  form {
-    width: 40vh;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+form {
+  width: 40vh;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #727070; 
+}
   
-  form label {
-    font-weight: bold;
-  }
-  
-  form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-  }
-  
-  form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    background-color: #0056b3;
-  }
-  
+form input {
+  width: calc(100% - 16px); 
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+}
+
+.login-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login-text {
+  margin-bottom: 5%;
+}
+#login-text {
+  text-align: center;
+}
+
+form {
+  margin-top: 50px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3b3636; 
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease; 
+}
+
+form button:hover {
+  background-color: #5b5b5b; 
+  transition: background-color 0.5s ease; 
+}

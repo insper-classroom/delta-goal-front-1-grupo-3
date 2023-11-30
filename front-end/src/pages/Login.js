@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Button,Alert } from 'react-bootstrap';
-import axios from 'axios';
-import './style/Login.css'; 
-import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+import logoBranco from './img/DeltaGoalBranco.png';
+import './style/Login.css'; 
 const cookies = new Cookies();
 
 
@@ -31,47 +32,55 @@ export default function Login() {
       });
   }
 
-  return (
+  return (    
     <div className='login-wrapper'>
-      <Form onSubmit={(e)=>handleSubmit(e)}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email: </Form.Label>
-          <Form.Control
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Digite seu email"
-          />
-        </Form.Group>
+      <img src={logoBranco} alt='logo'/>
+    
+    <div className='login-text'>
+      <h1 id="login-text">Login</h1>
+        <Form onSubmit={(e)=>handleSubmit(e)}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email: </Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Digite seu email"
+            />
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Senha: </Form.Label>
-          <Form.Control
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Senha"
-          />
-        </Form.Group>
-
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          Login
-        </Button>
-        {error && <Alert variant="danger">{error}</Alert>}
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={(e) => navigate('/reset-password')}
-        >
-          Esqueci minha senha
-        </Button>
-      </Form>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Senha: </Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Digite sua senha"
+            />
+          </Form.Group>
+          <div className='login-button'>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => handleSubmit(e)}
+            >
+              Login
+            </Button>
+            {error && <Alert variant="danger">{error}</Alert>}
+          </div>
+          <div className='reset-button'>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={(e) => navigate('/reset-password')}
+            >
+              Esqueci minha senha
+            </Button>
+          </div>
+        </Form>
+      </div>
     </div>
   );
 }
