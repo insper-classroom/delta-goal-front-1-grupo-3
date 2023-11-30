@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import NotHeader from './NotHeader';
-import './style/Partidas.css';
+import logoPrincipal from './img/DeltaGoalPrincipal.png';
+import './style/ResetPassword.css';
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('');
@@ -36,17 +36,27 @@ export default function ResetPassword() {
   };
 
   return (
-    <div>
-      <NotHeader />
-      <div className="redefinir-container">
-        <h2>Redefinir Senha</h2>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={handleEmailChange} />
-        </div>
-        <button onClick={handleRedefinirClick}>Redefinir Senha</button>
-        {feedbackMessage && <p className="feedback-message">{feedbackMessage}</p>}
+    <div className="reset-container">
+      <div className="reset-wrapper">
+        <div className="logo-container">
+          <img src={logoPrincipal} alt='logo'/>
+        
+          <div className="logo-text">
+            <h1 id='logo-text'>Redefinir Senha</h1>
+            <div className="redefinir-container">
+              <div className="form-group">
+                <label htmlFor="email">Email:</label>
+                <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder='Digite seu email'/>
+              </div>
+              <button className="reset-button" onClick={handleRedefinirClick}>Redefinir Senha</button>
+              {feedbackMessage && <p className="feedback-message">{feedbackMessage}</p>}
+            </div>
+          </div>
+          </div>
       </div>
+      <footer>
+        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+      </footer>
     </div>
   );
 }

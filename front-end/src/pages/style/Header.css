@@ -1,13 +1,13 @@
 /* Header.css */
 
 .header {
-    background-color: #20232a; /* ou qualquer outra cor que você preferir */
-    padding: 35px 0; /* Aumenta o padding vertical para aumentar a altura */
+    background-color: #20232a; 
+    height: 5vh;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2); /* Adiciona uma sombra para profundidade */
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
   }
   
   .header ul {

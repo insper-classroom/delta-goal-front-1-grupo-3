@@ -1,12 +1,10 @@
-body {
-  background-color:#727070;
-  font-family: 'Asap', sans-serif;
+h1 {
+  color: #000000;
 }
 
 img {
   width: 50%;
-  height: 50%;
-  object-fit: cover;
+  height: auto;
   margin-left: -5%;
   padding-right: 5%;
 }
@@ -15,16 +13,14 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 92vh;
   }
   
 form {
   width: 40vh;
-  border: 1px solid #ddd;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #727070; 
+  border-radius:7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
   
 form input {
@@ -32,8 +28,12 @@ form input {
   padding: 8px;
   margin-top: 5px;
   margin-bottom: 10px;
-  border: 1px solid #ccc; 
+  border: 1px solid #000000; 
   border-radius: 5px;
+}
+
+.alert {
+  margin-top: 8px;
 }
 
 .login-button {
@@ -54,13 +54,14 @@ form {
 
 form label {
   font-weight: bold;
+  color: #000000;
 }
 
 form button {
   width: 100%;
   padding: 10px;
-  background-color: #3b3636; 
-  color: #ffffff;
+  background-color: black; 
+  color: white;
   font-weight: bold;
   border: none;
   border-radius: 5px;
@@ -68,7 +69,19 @@ form button {
   transition: background-color 0.5s ease; 
 }
 
+.reset-button {
+  background-color: #343a3e;
+  border-radius: 5px;
+}
+
 form button:hover {
-  background-color: #5b5b5b; 
+  background-color: #40484e; 
   transition: background-color 0.5s ease; 
+}
+
+footer {
+  color: #000000;
+  background-color: black;
+  height: 8vh;
+  border-top: 2px solid #41484c;
 }
