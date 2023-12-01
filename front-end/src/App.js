@@ -3,6 +3,7 @@ import React from 'react';
 import Home from './pages/Home';
 import Time from './pages/Time';
 import Partidas from './pages/Partidas';
+import Cruzamentos from './pages/Cruzamentos';
 import Login from './pages/Login';
 import ProtectedRoutes from './ProtectedRoutes';
 import NotFound from './pages/NotFound';
@@ -32,6 +33,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/time" element={<Time />} />
             <Route path="/partidas" element={<Partidas />} />
+            <Route path="/cruzamentos" element={<Cruzamentos />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

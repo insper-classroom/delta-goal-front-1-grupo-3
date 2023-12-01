@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
-import './style/Partidas.css';
+import './style/Cruzamentos.css';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -15,7 +15,7 @@ export default function Partidas() {
         // Obter todos os cookies do navegador
         const token = cookies.get('token');
         console.log(token)
-        const response = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_jogadores/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
+        const response = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/cruzamentos_jogadores/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
           method: 'GET',
           headers: {
             "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export default function Partidas() {
         {/* Container principal para a página de Partidas */}
         <div className="visao-geral">
           <div className="campo-futebol">
-                <img src="campo.png" alt="Campo de futebol" />
+                <img src="campocru.png" alt="Campo de futebol" />
           </div>
           <div className="destaques">Destaques</div>
           <div className="envolvidos">Jogadores Envolvidos</div>
@@ -70,3 +70,4 @@ export default function Partidas() {
     </>
   );
 }
+

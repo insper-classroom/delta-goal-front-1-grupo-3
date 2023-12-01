@@ -9,8 +9,9 @@ const Header = () => {
       <nav>
         <ul>
           <li><Link to="/home">Home</Link></li>
-          <li><Link to="/time">Time</Link></li>
-          <li><Link to="/partidas">Partidas</Link></li>
+          <li><Link to="/time">Times</Link></li>
+          <li><Link to="/partidas">Rupturas</Link></li>
+          <li><Link to="/cruzamentos">Cruzamentos</Link></li>
           <li><Logout /></li>
         </ul>
       </nav>
