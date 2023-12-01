@@ -13,7 +13,7 @@ export default function ResetPassword() {
   const handleRedefinirClick = async () => {
     try {
       // Realize um pedido ao servidor para redefinir a senha usando o email
-      const response = await fetch('https://sprint-deltago-5179309dcfcb.herokuapp.com/login/reset-password', {
+      const response = await fetch('https://sprint-deltago-5179309dcfcb.herokuapp.com/reset-password', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

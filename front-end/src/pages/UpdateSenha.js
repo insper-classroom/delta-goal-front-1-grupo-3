@@ -22,7 +22,7 @@ export default function UpdateSenha() {
       }
       const params = new URLSearchParams(window.location.search);
       const token = params.get('token');
-      const response = await fetch('https://sprint-deltago-5179309dcfcb.herokuapp.com/login/update-senha', {
+      const response = await fetch('https://sprint-deltago-5179309dcfcb.herokuapp.com/update-senha', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
