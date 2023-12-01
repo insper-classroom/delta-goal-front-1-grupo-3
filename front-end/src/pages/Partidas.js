@@ -48,14 +48,7 @@ export default function Partidas() {
         {/* Container principal para a página de Partidas */}
         <div className="visao-geral">
           <div className="campo-futebol">
-            <div className="goal top-goal"></div>
-            <div className="center-circle"></div>
-            <div className="goal bottom-goal"></div>
-            <div className="field top-area"></div>
-            <div className="field bottom-area"></div>
-            <div className="middle-line"></div>
-            <div className="corners"></div>
-            <div className="lines"></div>
+                <img src="campo.png" alt="Campo de futebol" />
           </div>
           <div className="destaques">Destaques</div>
           <div className="envolvidos">Jogadores Envolvidos</div>
