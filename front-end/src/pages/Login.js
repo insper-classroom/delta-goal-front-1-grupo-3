@@ -79,8 +79,8 @@ export default function Login() {
                   >
                   Esqueci minha senha
                 </Button>
-                {error && <Alert variant="danger" className='Alert'>{error}</Alert>}
               </div>
+              {error && <Alert variant="danger" className='Alert'>{error}</Alert>}
             </Form>
           </div>
       </div>

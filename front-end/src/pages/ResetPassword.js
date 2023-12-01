@@ -48,14 +48,14 @@ export default function ResetPassword() {
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder='Digite seu email'/>
               </div>
-              <button className="reset-button" onClick={handleRedefinirClick}>Redefinir Senha</button>
+              <button className="reset-button2" onClick={handleRedefinirClick}>Redefinir Senha</button>
+              <button className="back-button" onClick={() => window.location.href = '/login'}>Voltar para login</button>
               {feedbackMessage && <p className="feedback-message">{feedbackMessage}</p>}
             </div>
           </div>
           </div>
       </div>
       <footer>
-        <p>&copy; 2023 Your Company Name. All rights reserved.</p>
       </footer>
     </div>
   );

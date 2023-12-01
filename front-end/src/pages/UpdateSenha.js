@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logoPrincipal from './img/DeltaGoalPrincipal.png';
+import './style/UpdateSenha.css';
 
 export default function UpdateSenha() {
   const [password, setPassword] = useState('');
@@ -41,19 +43,32 @@ export default function UpdateSenha() {
     }
   };
   return (
-    <div>
-      <h2>Altere Sua Senha</h2>
-      <div>
-        <label htmlFor="password">Nova Senha:</label>
-        <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+    <div className='update-container'>
+      <div className='update-wrapper'>
+        <img src={logoPrincipal} alt="logo"/>
+          <div className='update-text'>
+            <h2 id='update-text'>Altere Sua Senha</h2>
+            <div className='update-form'>
+              <div>
+                <label htmlFor="password">Nova Senha:</label>
+                <input placeholder="Digite sua senha" type="password" id="password" value={password} onChange={handlePasswordChange} />
+              </div>
+
+              <div>
+                <label htmlFor="confirmPassword">Confirme a Nova Senha:</label>
+                <input placeholder="Confirme sua senha" type="password" id="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+              </div>
+
+              <button onClick={handleResetPassword}>Alterar Senha</button>
+              <button className="back-button" onClick={() => window.location.href = '/login'}>Voltar para login</button>
+              <div className='update-error'>
+                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>} 
+              </div>
+            </div>
+          </div>
       </div>
-      <div>
-        <label htmlFor="confirmPassword">Confirme a Nova Senha:</label>
-        <input type="password" id="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange} />
-      </div>
-      <button onClick={handleResetPassword}>Alterar Senha</button>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+    <footer></footer>
     </div>
   );
 }
