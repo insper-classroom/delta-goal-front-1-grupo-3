@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.0e9d0f2b.css",
-    "main.js": "/static/js/main.9ec10192.js",
+    "main.js": "/static/js/main.a5ecd432.js",
     "static/js/787.498e3191.chunk.js": "/static/js/787.498e3191.chunk.js",
     "static/media/DeltaGoalPrincipal.png": "/static/media/DeltaGoalPrincipal.9381cf8841f3dc93dc2f.png",
     "index.html": "/index.html",
     "main.0e9d0f2b.css.map": "/static/css/main.0e9d0f2b.css.map",
-    "main.9ec10192.js.map": "/static/js/main.9ec10192.js.map",
+    "main.a5ecd432.js.map": "/static/js/main.a5ecd432.js.map",
     "787.498e3191.chunk.js.map": "/static/js/787.498e3191.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0e9d0f2b.css",
-    "static/js/main.9ec10192.js"
+    "static/js/main.a5ecd432.js"
   ]
 }
