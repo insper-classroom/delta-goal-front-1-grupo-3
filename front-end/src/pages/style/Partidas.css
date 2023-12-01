@@ -12,7 +12,7 @@
     gap: 10px;
 }
 
-.destaques, .envolvidos, .desfechos, .lista-lances {
+.campo-futebol, .destaques, .envolvidos, .desfechos, .lista-lances {
     padding: 10px; /* Espaçamento interno */
     height: 100px; /* Altura exemplo, ajuste conforme necessário */
     border: 2px solid #ccc; /* Borda para o container */
@@ -20,18 +20,20 @@
 
 /* Simula um campo de futebol */
 .campo-futebol {
-  width: 100%; /* Adjust the width as necessary */
-  height: auto; /* This can be changed based on your layout needs */
-  display: flex; /* Using flex to center the image */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  overflow: hidden; /* Ensures no part of the image spills out of the container */
-}
-
-.campo-futebol img {
-  max-width: 100%; /* Ensures the image is not wider than the container */
-  height: auto; /* Keeps the image's aspect ratio */
-}
+    /* You can set a specific height or leave it as auto to maintain aspect ratio */
+    height: auto;
+    padding-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .campo-futebol img {
+    width: 100%; /* This will make the image fill the container */
+    max-width: none; /* Remove the max-width constraint */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
 
 /* Container para o vídeo */
 .video-container {
