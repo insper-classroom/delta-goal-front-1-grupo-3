@@ -2,7 +2,7 @@ import { Navigate, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Home from './pages/Home';
 import Time from './pages/Time';
-import Partidas from './pages/Partidas';
+import Rupturas from './pages/Rupturas';
 import Cruzamentos from './pages/Cruzamentos';
 import Login from './pages/Login';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -32,7 +32,7 @@ function App() {
           <Route element={<ProtectedRoutes />}> 
             <Route path="/home" element={<Home />} />
             <Route path="/time" element={<Time />} />
-            <Route path="/partidas" element={<Partidas />} />
+            <Route path="/rupturas" element={<Rupturas />} />
             <Route path="/cruzamentos" element={<Cruzamentos />} />
           </Route>
           <Route path="*" element={<NotFound />} />
