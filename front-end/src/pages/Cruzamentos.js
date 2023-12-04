@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { transformarDadosParaGoogleCharts } from './TransformData';
+import { Chart } from "react-google-charts";
 import Header from './Header';
 import './style/Cruzamentos.css';
 import Cookies from 'universal-cookie';
@@ -6,6 +8,7 @@ const cookies = new Cookies();
 
 export default function Partidas() {
   const [lances, setLances] = useState([]);
+  const [options, setOptions] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,8 +28,26 @@ export default function Partidas() {
         });
 
         if (response.ok) {
-          const data = await response.json();
-          console.log(data);
+          const JsonData = await response.json()
+          const data = [["jogadores", "cruzamentos"]];
+          
+          JsonData.jogadores.forEach(jogador => {
+            data.push([jogador.nome, jogador.cruzamentos]);
+          });
+
+          const options = {
+            title: "Cruzamentos dos Jogadores",
+            chartArea: { width: "50%" },
+            hAxis: {
+              title: "Cruzamentos",
+              minValue: 0,
+            },
+            vAxis: {
+              title: "Jogadores",
+            },
+          };
+          
+          // const dadosFormatados = transformarDadosParaGoogleCharts(data);
           setLances(data);
         } else {
           setError(`Erro ao buscar lances: ${response.statusText}`);
@@ -48,8 +69,9 @@ export default function Partidas() {
         {/* Container principal para a página de Partidas */}
         <div className="visao-geral">
           <div className="campo-futebol">
-                <img src="campocru.png" alt="Campo de futebol" />
+                <img src="campo.png" alt="Campo de futebol" />
           </div>
+
           <div className="destaques">Destaques</div>
           <div className="envolvidos">Jogadores Envolvidos</div>
           <div className="desfechos">Desfechos</div>
@@ -59,6 +81,17 @@ export default function Partidas() {
           Lista de Lances
           data: {JSON.stringify(lances)}
         </div>
+
+        <div className="grafico-barras">
+            <Chart
+              chartType="PieChart"
+              width="100%"
+              height="400px"
+              data={lances}
+              options={options}
+            />
+        </div>
+
         <div className="video-container">
           {/* Placeholder para o vídeo - substitua 'path_to_your_video.mp4' pelo caminho correto do seu vídeo */}
           <video controls>
