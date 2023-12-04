@@ -2,9 +2,9 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 const token = cookies.get('token');
 
-export const fetchDestaques = async () => {
+export const fetchDestaques = async (teamName) => {
     try {
-      const response = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_jogadores/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
+      const response = await fetch(`https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_jogadores/jogo/Palmeiras x Red Bull Bragantino/time/${teamName}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
@@ -23,9 +23,9 @@ export const fetchDestaques = async () => {
     }
   };
 
-export const fetchDesfechos = async () => {
+export const fetchDesfechos = async (teamName) => {
     try {
-      const response = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_grafico/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
+      const response = await fetch(`https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_grafico/jogo/Palmeiras x Red Bull Bragantino/time/${teamName}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",
@@ -44,9 +44,9 @@ export const fetchDesfechos = async () => {
     }
   };
 
-export const fetchLances = async () => {
+export const fetchLances = async (teamName) => {
     try {
-        const response = await fetch("https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_lista/jogo/Palmeiras x Red Bull Bragantino/time/Red Bull Bragantino", {
+        const response = await fetch(`https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_lista/jogo/Palmeiras x Red Bull Bragantino/time/${teamName}`, {
         method: 'GET',
         headers: {
           "Content-Type": "application/json",

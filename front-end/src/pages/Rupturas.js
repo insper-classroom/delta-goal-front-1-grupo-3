@@ -14,11 +14,12 @@ export default function Rupturas() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const destaquesData = await fetchDestaques();
+        const destaquesData = await fetchDestaques(selectedTeam);
         setDestaques(destaquesData);
-        const rupturasData = await fetchLances();
+        console.log(selectedTeam)
+        const rupturasData = await fetchLances(selectedTeam);
         setRupturas(rupturasData);
-        const desfechosData = await fetchDesfechos();
+        const desfechosData = await fetchDesfechos(selectedTeam);
         setDesfechos(desfechosData);
       } catch (error) {
         setError(error); 
@@ -26,9 +27,10 @@ export default function Rupturas() {
     };
 
     fetchData();
-  }, []);
+  }, [selectedTeam]);
 
     const rupturasArray = Object.values(rupturas);
+    const destaquesArray = Object.values(destaques);
 
     const exibirDetalhesRuptura = () => {
       if (selectedRuptura) {
@@ -47,15 +49,34 @@ export default function Rupturas() {
       <div className="container">
         <div className="visao-geral">
 
+          <div className="selecionar-time">
+            Selecione um time: 
+            <select
+              onChange={(e) => {
+                const value = e.target.value;
+                setSelectedTeam(value);
+              }}
+            >
+              <option value=""> </option>
+              <option value="Red Bull Bragantino">Red Bull Bragantino</option>
+              <option value="Palmeiras">Palmeiras</option>
+            </select>
+          </div>
+
           <div className="campo-futebol">
             <img src="campo.png" alt="Campo de futebol" />
           </div>
 
             <div className="destaques">Destaques
-              data : {JSON.stringify(destaques)}
+              <ul>
+                {destaquesArray[0] && destaquesArray[0].map((destaque, index) => (
+                  <li key={index} value={index}>
+                    {destaque.nome}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="envolvidos">Jogadores Envolvidos</div>
             <div className="desfechos">Desfechos</div>
   
         </div>
