@@ -13,7 +13,6 @@
 .campo-futebol, .destaques, .envolvidos, .desfechos {
     padding: 10px; /* Espaçamento interno */
     height: 100px; /* Altura exemplo, ajuste conforme necessário */
-    border: 2px solid #ccc; /* Borda para o container */
 }
 
 /* Simula um campo de futebol */
@@ -61,6 +60,7 @@ video {
     height: 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     width: 80%;
+    margin-top: 40px;
 }
 
 .button-selected {
