@@ -45,73 +45,75 @@ export default function Rupturas() {
 
   return (
     <>
-      <Header />
-      <div className="container">
-        <div className="visao-geral">
-          <h2>Visão Geral</h2>
-          <div className="selecionar-time">
-            Selecione um time: 
-            <select
-              onChange={(e) => {
-                const value = e.target.value;
-                setSelectedTeam(value);
-              }}
-            >
-              <option value=""> </option>
-              <option value="Red Bull Bragantino">Red Bull Bragantino</option>
-              <option value="Palmeiras">Palmeiras</option>
-            </select>
-          </div>
-
-          <div className="campo-futebol">
-            <img src="campo.png" alt="Campo de futebol" />
-          </div>
-
-            <div className="destaques">
-              <h2>Maior número de rupturas:</h2>
-              <ul>
-                {destaquesArray[0] && destaquesArray[0].map((destaque, index) => (
-                  <li key={index} value={index}>
-                    {destaque.nome}
-                  </li>
+          <Header />
+              <div className="selecionar-time">
+                <h2>Selecione um time:</h2> 
+                {['Red Bull Bragantino', 'Palmeiras'].map((team, index) => (
+                  <button 
+                    className={`button-site ${selectedTeam === team ? 'button-selected' : ''}`}
+                    key={index} 
+                    onClick={() => {
+                      setSelectedTeam(team);
+                    }}
+                  >
+                    {team}
+                  </button>
                 ))}
-              </ul>
-            </div>
+              </div>
+              
+              {selectedTeam ? (
+              <>
+              <div className='container'>
+                <div className="visao-geral">
+                    <h2>Visão Geral:</h2>
+                    <div className="campo-futebol">
+                      <img src="campo.png" alt="Campo de futebol" />
+                    </div>
+                  <div className="destaques">
+                    <h2>Maior número de rupturas:</h2>
+                    <ul>
+                      {destaquesArray[0] && destaquesArray[0].map((destaque, index) => (
+                        <li key={index} value={index}>
+                          {destaque.nome}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="desfechos">
+                    <h2>Desfechos:</h2>
+                  </div>
+                </div>
 
-            <div className="desfechos">
-              <h2>Desfechos:</h2>
-            </div>
-  
-        </div>
+                <div className="visao-geral2">
+                  <h2>Lances</h2>
+                  <div className="lista-lances">
+                    {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
+                      <button 
+                        className={`button-site ${selectedRuptura === ruptura ? 'button-selected' : ''}`}
+                        key={index} 
+                        value={index} 
+                        onClick={() => {
+                          const selectedRuptura = rupturasArray[0][index];
+                          setSelectedRuptura(selectedRuptura);
+                        }}>
+                        {ruptura.inicio_ruptura}
+                      </button>
+                    ))}
+                  </div>
 
-        <div className="visao-geral2">
-          <h2>Lances</h2>
-          <div className="lista-lances">
-            Lista de Rupturas:
-            <select 
-              onChange={(e) => {
-              const value = e.target.value;
-              const selectedRuptura = rupturasArray[0][value];
-              setSelectedRuptura(selectedRuptura);
-              }}>
-              <option value="">Selecione uma ruptura</option>
-              {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-                <option key={index} value={index}>{ruptura.inicio_ruptura}</option>
-              ))}
-            </select>
-            {exibirDetalhesRuptura()}
+                  <div className="video-container">
+                    <video controls>
+                      <source src="path_to_your_video.mp4" type="video/mp4" />
+                      Seu navegador não suporta vídeos.
+                    </video>
+                  </div>
+                  {exibirDetalhesRuptura()}
+              </div>
           </div>
-          
-          <div className="video-container">
-            <video controls>
-              <source src="path_to_your_video.mp4" type="video/mp4" />
-              Seu navegador não suporta vídeos.
-            </video>
-          </div>
-        </div>
-        
-      </div>
+            </>
+              ) : (
+                <h2>Selecione um time para ver os destaques e lances</h2>
+                )}
     </>
-    );
-  };
-
+  );
+}
