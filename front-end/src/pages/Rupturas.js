@@ -48,7 +48,7 @@ export default function Rupturas() {
       <Header />
       <div className="container">
         <div className="visao-geral">
-
+          <h2>Visão Geral</h2>
           <div className="selecionar-time">
             Selecione um time: 
             <select
@@ -67,7 +67,8 @@ export default function Rupturas() {
             <img src="campo.png" alt="Campo de futebol" />
           </div>
 
-            <div className="destaques">Destaques
+            <div className="destaques">
+              <h2>Maior número de rupturas:</h2>
               <ul>
                 {destaquesArray[0] && destaquesArray[0].map((destaque, index) => (
                   <li key={index} value={index}>
@@ -77,13 +78,16 @@ export default function Rupturas() {
               </ul>
             </div>
 
-            <div className="desfechos">Desfechos</div>
+            <div className="desfechos">
+              <h2>Desfechos:</h2>
+            </div>
   
         </div>
 
         <div className="visao-geral2">
+          <h2>Lances</h2>
           <div className="lista-lances">
-            Lista de Rupturas
+            Lista de Rupturas:
             <select 
               onChange={(e) => {
               const value = e.target.value;
