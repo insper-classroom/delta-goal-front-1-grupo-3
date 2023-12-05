@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <h1>Delta Gol</h1>
+      <h1>Delta Goal</h1>
     </div>
   );
 }

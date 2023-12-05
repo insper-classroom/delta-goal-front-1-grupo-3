@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchDestaques, fetchLances, fetchDesfechos } from './Requisicoes.js';
+import { fetchDestaques, fetchLances, fetchDesfechos } from '../functions/Requisicoes.js';
 import Header from './Header';
 import './style/Rupturas.css';
 
@@ -9,7 +9,6 @@ export default function Rupturas() {
   const [desfechos, setDesfechos] = useState([]);
   const [selectedRuptura, setSelectedRuptura] = useState(null); 
   const [selectedTeam, setSelectedTeam] = useState(null);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +21,7 @@ export default function Rupturas() {
         const desfechosData = await fetchDesfechos(selectedTeam);
         setDesfechos(desfechosData);
       } catch (error) {
-        setError(error); 
+        console.log(error); 
       }
     };
 

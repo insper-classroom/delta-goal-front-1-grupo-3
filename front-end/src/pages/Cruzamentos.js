@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos } from './Requisicoes.js';
+import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos } from '../functions/Requisicoes.js';
 import { Chart } from "react-google-charts";
 import Header from './Header';
 import './style/Cruzamentos.css';
@@ -13,7 +13,6 @@ export default function Partidas() {
   const [cruzamentosBragantino, setCruzamentosBragantino] = useState([]);
 
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
-  const [error, setError] = useState(null);
 
   const options = {
     title: "Cruzamentos dos Jogadores",
@@ -55,11 +54,11 @@ export default function Partidas() {
           }
         }
       } catch (error) {
-        setError(error); 
+        console.log(error); 
       }
     };
     fetchData();
-  }, []);
+  }, );
 
   const CruzamentosPalmeirasArray = Object.values(cruzamentosPalmeiras);
   const CruzamentosBragantinoArray = Object.values(cruzamentosBragantino);

@@ -1,19 +1,18 @@
 import { Navigate, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import Home from './pages/Home';
-import Time from './pages/Time';
 import Rupturas from './pages/Rupturas';
 import Cruzamentos from './pages/Cruzamentos';
 import Login from './pages/Login';
-import ProtectedRoutes from './ProtectedRoutes';
 import NotFound from './pages/NotFound';
 import ResetPassword from './pages/ResetPassword';
 import UpdateSenha from './pages/UpdateSenha';
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
 
-const isAuthenticated = () => {
-  return !!cookies.get('token');
+import ProtectedRoutes from './functions/ProtectedRoutes';
+import CheckToken from './functions/CheckToken';
+
+const isAuthenticated = async () => {
+  return await CheckToken();
 }
 
 function App() {
@@ -31,7 +30,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}> 
             <Route path="/home" element={<Home />} />
-            <Route path="/time" element={<Time />} />
             <Route path="/rupturas" element={<Rupturas />} />
             <Route path="/cruzamentos" element={<Cruzamentos />} />
           </Route>
