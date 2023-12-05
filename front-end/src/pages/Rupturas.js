@@ -35,6 +35,7 @@ export default function Rupturas() {
       if (selectedRuptura) {
         return (
           <div className="detalhes-ruptura">
+            <h2>DETALHES DA RUPTURA</h2>
             <p>Posse de bola: {selectedRuptura.nome_jogador_posse_bola}</p>
             <p>Jogadores defesa: {selectedRuptura.nomes_jogadores_defesa}</p>
             <p>Desfecho: {selectedRuptura.desfecho}</p>
@@ -67,7 +68,7 @@ export default function Rupturas() {
               <>
               <div className='container'>
                 <div className="visao-geral">
-                    <h2>Visão Geral:</h2>
+                    <h2>RUPTURAS</h2>
                     <div className="campo-futebol">
                       <img src="campo.png" alt="Campo de futebol" />
                     </div>

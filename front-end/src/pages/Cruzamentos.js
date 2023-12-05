@@ -70,6 +70,8 @@ export default function Partidas() {
       <Header />
       <div className="container">
         <div className="visao-geral">
+          <h2>CRUZAMENTO</h2>
+
           <div className="campo-futebol"><img src="campo.png" alt="Campo de futebol" /></div>
 
           <div className="destaques-cruzamentos">
