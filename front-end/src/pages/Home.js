@@ -17,10 +17,14 @@ const Home = () => {
           <span className="pink-text">every</span> instant of{' '}
           <span className="blue-text">every</span> match
         </h3>
-      <p>
-        Este site foi desenvolvido com o objetivo de acessar os dados dos jogos do Palmeiras
+      <h4>
+        Este site foi criado com o objetivo de acessar os dados dos jogos do Palmeiras
         contra o Red Bull Bragantino, com acesso às rupturas e cruzamentos dos jogadores. O usuário pode acessar os
-        mesmos através de um menu de navegação, que contém as opções "Rupturas" e "Cruzamentos".
+        mesmos através das abas disponíveis.
+      </h4>
+      <p>
+        Desenvolvedores: Gabriel Mendes, João Gabriel Faraco, Jonas Pelegrina, Leonardo Freitas, Luigi Orlandi, Nina Savoy e Manoela Saragoça.
+        Estudantes de Ciência de Computação do Insper. 
       </p>
       </div>
     </div>
