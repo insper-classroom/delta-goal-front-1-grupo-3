@@ -1,0 +1,5 @@
+.destaques-cruzamentos {
+    display: flex;
+    flex-direction: row;
+    gap: 20%
+}
