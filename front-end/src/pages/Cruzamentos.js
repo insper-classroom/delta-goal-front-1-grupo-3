@@ -73,6 +73,7 @@ export default function Partidas() {
           <h2>CRUZAMENTO</h2>
 
           <div className="campo-futebol"><img src="campo.png" alt="Campo de futebol" /></div>
+          <h2>DESTAQUES</h2>
 
           <div className="destaques-cruzamentos">
             <div className="destaques-palmeiras">
@@ -159,6 +160,7 @@ export default function Partidas() {
             Seu navegador não suporta vídeos.
           </video>
         </div>
+        <h2>DETALHES DO CRUZAMENTO</h2>
       </div>
 
       </div>

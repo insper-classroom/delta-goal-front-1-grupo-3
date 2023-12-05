@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './style/Rupturas.css';
 import { fetchDestaques, fetchLances, fetchDesfechos } from '../functions/Requisicoes.js';
 import Header from './Header';
+import logoPrincipal from './img/DeltaGoalPrincipal.png';
+
 
 export default function Rupturas() {
   const [rupturas, setRupturas] = useState([]);
