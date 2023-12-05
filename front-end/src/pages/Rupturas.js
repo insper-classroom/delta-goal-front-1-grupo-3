@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import './style/Rupturas.css';
 import { fetchDestaques, fetchLances, fetchDesfechos } from '../functions/Requisicoes.js';
 import Header from './Header';
-import './style/Rupturas.css';
 
 export default function Rupturas() {
   const [rupturas, setRupturas] = useState([]);
@@ -35,7 +35,10 @@ export default function Rupturas() {
       if (selectedRuptura) {
         return (
           <div className="detalhes-ruptura">
-            <p>{selectedRuptura.nome_jogador_ruptura}</p>
+            <p>Posse de bola: {selectedRuptura.nome_jogador_posse_bola}</p>
+            <p>Jogadores defesa: {selectedRuptura.nomes_jogadores_defesa}</p>
+            <p>Desfecho: {selectedRuptura.desfecho}</p>
+            <p>Jogador: {selectedRuptura.nome_jogador_ruptura}</p>
           </div>
         );
       }
@@ -95,7 +98,7 @@ export default function Rupturas() {
                           const selectedRuptura = rupturasArray[0][index];
                           setSelectedRuptura(selectedRuptura);
                         }}>
-                        {ruptura.inicio_ruptura}
+                        {ruptura.inicio_ruptura + ' - '+ ruptura.zona_defesa + ' - ' + ruptura.zona_ataque}
                       </button>
                     ))}
                   </div>
