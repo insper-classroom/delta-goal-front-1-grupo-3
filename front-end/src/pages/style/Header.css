@@ -2,7 +2,7 @@
 
 .header {
     background-color: #20232a; 
-    height: 10vh;
+    height: 10vh; 
     color: white;
     display: flex;
     justify-content: space-around;

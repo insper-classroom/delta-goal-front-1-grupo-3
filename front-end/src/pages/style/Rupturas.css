@@ -59,11 +59,24 @@ video {
     overflow-y: scroll;
     height: 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    width: 80%;
+    width: 100%;
     margin-top: 40px;
 }
 
 .button-selected {
     background-color: #000000;
     color: #ffffff;
+}
+.selecionar-time{
+    background-color: #009FE3;
+    padding: 1rem;
+}
+h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    color: #ffffff;
+    background-color: #009FE3;
+    border-radius: 10px;
 }

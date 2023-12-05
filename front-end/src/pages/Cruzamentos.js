@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+// import './style/Cruzamentos.css';
 import { transformarDadosParaGoogleCharts } from './TransformData';
 import { Chart } from "react-google-charts";
 import Header from './Header';
-import './style/Cruzamentos.css';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
