@@ -1,6 +1,32 @@
 .detalhes-cruzamentos {
+    margin-left: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10%;
+}
+.destaques-sep{
+    height: 150px;
+
+}
+.envolvidos-sep{
+    height: 150px;
+
+}
+.desfechos-sep{
+    height: 150px;
+
+}
+
+.destaques-red{
+    height: 150px;
+
+}
+.envolvidos-red{
+    height: 150px;
+
+}
+.desfechos-red{
+    height: 150px;
+
 }
