@@ -55,20 +55,21 @@ export default function Partidas() {
       <Header />
       <div className="container">
         <div className="visao-geral-cruz">
-          <h2>Visão Geral</h2>
+        <h2>Visão Geral</h2>
+        <div className='dados_cruzamento'>
           <div className="campo-futebol"><img src="campo.png" alt="Campo de futebol" /></div>
           
           <div className="detalhes-cruzamentos">
             <div className="infos-palmeiras">
               <div className='destaques-sep'>
                 <h3>Destaques SEP</h3>
-                <ul>
+                { <ul>
                   {DestaquesPalmeirasArray[0] && DestaquesPalmeirasArray[0].map((destaque, index) => (
                     <li key={index} value={index}>
                     {destaque.nome} - {destaque.cruzamentos}
                     </li>
-                  ))}
-                </ul>
+                  ))} 
+                </ul>}
               </div>
               <div className='envolvidos-sep'>
                 <h3>Jogadores envolvidos SEP</h3>
@@ -111,6 +112,7 @@ export default function Partidas() {
               </div>
             </div>
           </div>
+        </div>
         </div>
 
       <div className='visao-geral2'>
