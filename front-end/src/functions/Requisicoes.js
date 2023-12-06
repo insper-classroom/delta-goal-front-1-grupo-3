@@ -76,8 +76,14 @@ export const fetchLancesCruzamentos = async (teamName) => {
       redirect: 'follow',
     });
     if (response.ok) {
-      const data = await response.json();
+      const JsonData = await response.json();
+      const data = [["jogadores", "cruzamentos"]];
+
+      JsonData.jogadores.forEach((jogador) => {
+        data.push([jogador.nome, jogador.cruzamentos]);
+      }); 
       return data;
+      
     } else {
       throw new Error(`Erro ao buscar destaques: ${response.statusText}`);
     }

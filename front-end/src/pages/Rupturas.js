@@ -16,7 +16,7 @@ export default function Rupturas() {
     const fetchData = async () => {
       try {
         const destaquesData = await fetchDestaques(selectedTeam);
-        setDestaques(destaquesData);
+        setDestaques(destaquesData);  
         console.log(selectedTeam)
         const rupturasData = await fetchLances(selectedTeam);
         setRupturas(rupturasData);
