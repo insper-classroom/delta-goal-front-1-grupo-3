@@ -75,8 +75,8 @@ export default function Partidas() {
                 <h3>Jogadores envolvidos SEP</h3>
                 <Chart
                   chartType="BarChart"
-                  width="100%"
-                  height="100%"
+                  width="95%"
+                  height="95%"
                   data={lancesPalmeiras}
                   options={options}
                 />
@@ -101,8 +101,8 @@ export default function Partidas() {
                 <h3>Jogadores envolvidos RED</h3>
                 <Chart
                   chartType="BarChart"
-                  width="100%"
-                  height="100%"
+                  width="95%"
+                  height="95%"
                   data={lancesBragantino}
                   options={options}
                 />
