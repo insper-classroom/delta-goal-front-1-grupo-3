@@ -13,19 +13,22 @@
   }
 
   .custom-image {
-    width: 30%; /* ou outra unidade ou valor desejado */
-    height: auto; /* Isso mantém a proporção da imagem */
-    display: block; /* Evita espaços extras sob a imagem */
-    margin: 0 auto;
-    margin-left: 430px;
+    width: 30%;
+    margin-right: 30px;
+  }
+
+  .welcome-section-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-
   h4 {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    font-size: 20px;
   }
 
   h3 {
@@ -33,12 +36,13 @@
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    font-size: 28px;
+    width: 30%;
   }
 
 
   p {
-    font-size: 14px;
-    
+    font-size: 16px;
   }
 
 
