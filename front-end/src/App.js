@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import ResetPassword from './pages/ResetPassword';
 import UpdateSenha from './pages/UpdateSenha';
+import Partidas from './pages/Partidas';
 
 import ProtectedRoutes from './functions/ProtectedRoutes';
 import CheckToken from './functions/CheckToken';
@@ -29,6 +30,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}> 
+            <Route path="/partidas" element={<Partidas />} />
             <Route path="/home" element={<Home />} />
             <Route path="/rupturas" element={<Rupturas />} />
             <Route path="/cruzamentos" element={<Cruzamentos />} />
