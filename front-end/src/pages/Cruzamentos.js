@@ -15,8 +15,8 @@ export default function Partidas() {
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
 
   const options = {
-    legend: 'none',
-  }; 
+    legend: "none",
+  };
 
   const teams = ["Palmeiras", "Red Bull Bragantino"]
 
@@ -24,23 +24,16 @@ export default function Partidas() {
     const fetchData = async () => {
       try {
         for (const team of teams) {
-          const JsonData = await fetchLancesCruzamentos(team);
+          const lances = await fetchLancesCruzamentos(team);
           const destaques = await fetchDestaquesCruzamentos(team);
           const cruzamentos = await fetchCruzamentos(team);
-          const data = [["jogadores", "cruzamentos"]]
           if (team === "Palmeiras") {
-            JsonData.jogadores.forEach((jogador) => {
-              data.push([jogador.nome_jogador, jogador.cruzamentos])
-            })
-            setLancesPalmeiras(data);
+            setLancesPalmeiras(lances);
             setDestaquesPalmeiras(destaques);
             setCruzamentosPalmeiras(cruzamentos);
           }
           else {
-            JsonData.jogadores.forEach((jogador) => {
-              data.push([jogador.nome_jogador, jogador.cruzamentos])
-            })
-            setLancesBragantino(data);
+            setLancesBragantino(lances);
             setDestaquesBragantino(destaques);
             setCruzamentosBragantino(cruzamentos);
           }
