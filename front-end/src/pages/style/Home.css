@@ -17,7 +17,7 @@
     height: auto; /* Isso mantém a proporção da imagem */
     display: block; /* Evita espaços extras sob a imagem */
     margin: 0 auto;
-    
+    margin-left: 430px;
   }
   
 
