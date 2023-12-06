@@ -15,15 +15,7 @@ export default function Partidas() {
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
 
   const options = {
-    title: "Cruzamentos dos Jogadores",
-    chartArea: { width: "50%" },
-    hAxis: {
-      title: "Cruzamentos",
-      minValue: 0,
-    },
-    vAxis: {
-      title: "Jogadores",
-    },
+    legend: 'none',
   }; 
 
   const teams = ["Palmeiras", "Red Bull Bragantino"]
@@ -69,58 +61,61 @@ export default function Partidas() {
     <>
       <Header />
       <div className="container">
-        <div className="visao-geral">
-          <h2>CRUZAMENTO</h2>
-
+        <div className="visao-geral-cruz">
+          <h2>Visão Geral</h2>
           <div className="campo-futebol"><img src="campo.png" alt="Campo de futebol" /></div>
-          <h2>DESTAQUES</h2>
-
-          <div className="destaques-cruzamentos">
-            <div className="destaques-palmeiras">
-              <h3>Destaques SEP</h3>
-              <ul>
-                {DestaquesPalmeirasArray[0] && DestaquesPalmeirasArray[0].map((destaque, index) => (
-                  <li key={index} value={index}>
-                  {destaque.nome}
-                  </li>
-                ))}
-              </ul>
+          
+          <div className="detalhes-cruzamentos">
+            <div className="infos-palmeiras">
+              <div className='destaques-sep'>
+                <h3>Destaques SEP</h3>
+                <ul>
+                  {DestaquesPalmeirasArray[0] && DestaquesPalmeirasArray[0].map((destaque, index) => (
+                    <li key={index} value={index}>
+                    {destaque.nome} - {destaque.cruzamentos}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className='envolvidos-sep'>
+                <h3>Jogadores envolvidos SEP</h3>
+              </div>
+              <div className='desfechos-sep'>
+                <h3>Desfechos SEP</h3>
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="100%"
+                  data={lancesPalmeiras}
+                  options={options}
+                />
+              </div>
             </div>
-            <div className="destaques-bragantino">
-              <h3>Destaques RED</h3>
-              <ul>
-                {DestaquesBragantinoArray[0] && DestaquesBragantinoArray[0].map((destaque, index) => (
-                  <li key={index} value={index}>
-                  {destaque.nome}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
 
-          <div className="envolvidos">Jogadores Envolvidos</div>
-          {/* fazer os outros gráficos aqui (boa sorte luigi) */}
-
-          <div className="grafico-barras">
-            <h3>Desfechos SEP</h3>
-            <div className='grafico-palmeiras'>
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="400px"
-                data={lancesPalmeiras}
-                options={options}
-              />
-            </div>
-            <h3>Desfechos RED</h3>
-            <div className='grafico-bragantino'>
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="400px"
-                data={lancesBragantino}
-                options={options}
-              />
+            <div className="infos-bragantino">
+              <div className='destaques-red'>
+                <h3>Destaques RED</h3>
+                  <ul>
+                    {DestaquesBragantinoArray[0] && DestaquesBragantinoArray[0].map((destaque, index) => (
+                    <li key={index} value={index}>
+                    {destaque.nome} - {destaque.cruzamentos}
+                    </li>
+                    ))}
+                  </ul>
+              </div>
+              <div className='envolvidos-red'>
+                <h3>Jogadores envolvidos RED</h3>
+              </div>
+              <div className='desfechos-red'>
+                <h3>Desfechos RED</h3>
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="100%"
+                  data={lancesBragantino}
+                  options={options}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -160,9 +155,7 @@ export default function Partidas() {
             Seu navegador não suporta vídeos.
           </video>
         </div>
-        <h2>DETALHES DO CRUZAMENTO</h2>
       </div>
-
       </div>
     </>
   );

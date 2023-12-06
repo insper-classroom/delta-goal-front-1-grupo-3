@@ -1,5 +1,6 @@
-.destaques-cruzamentos {
+.detalhes-cruzamentos {
     display: flex;
     flex-direction: row;
-    gap: 20%
+    align-items: center;
+    gap: 10%;
 }
