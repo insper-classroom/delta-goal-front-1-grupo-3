@@ -72,16 +72,16 @@ export default function Partidas() {
               </div>
               <div className='envolvidos-sep'>
                 <h3>Jogadores envolvidos SEP</h3>
-              </div>
-              <div className='desfechos-sep'>
-                <h3>Desfechos SEP</h3>
                 <Chart
-                  chartType="PieChart"
+                  chartType="BarChart"
                   width="100%"
                   height="100%"
                   data={lancesPalmeiras}
                   options={options}
                 />
+              </div>
+              <div className='desfechos-sep'>
+                <h3>Desfechos SEP</h3>
               </div>
             </div>
 
@@ -98,16 +98,16 @@ export default function Partidas() {
               </div>
               <div className='envolvidos-red'>
                 <h3>Jogadores envolvidos RED</h3>
-              </div>
-              <div className='desfechos-red'>
-                <h3>Desfechos RED</h3>
                 <Chart
-                  chartType="PieChart"
+                  chartType="BarChart"
                   width="100%"
                   height="100%"
                   data={lancesBragantino}
                   options={options}
                 />
+              </div>
+              <div className='desfechos-red'>
+                <h3>Desfechos RED</h3>
               </div>
             </div>
           </div>
