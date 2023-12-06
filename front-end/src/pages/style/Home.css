@@ -1,0 +1,55 @@
+/* arquivo css que possui o estilo da página Home */ 
+.welcome-section {
+    text-align: center;
+    margin-top: 50px; /* Ajuste conforme necessário */
+  }
+  
+  .pink-text {
+    color: rgb(243, 21, 187);
+  }
+  
+  .blue-text {
+    color: blue;
+  }
+
+  .custom-image {
+    width: 30%;
+    margin-right: 30px;
+  }
+
+  .welcome-section-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h4 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+  }
+
+  h3 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 28px;
+    width: 30%;
+  }
+
+
+  p {
+    font-size: 16px;
+  }
+
+
+
+
+
+
+
+
+
