@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './style/Rupturas.css';
 import { fetchDestaques, fetchLances, fetchDesfechos } from '../functions/Requisicoes.js';
 import Header from './Header';
+import { Chart } from "react-google-charts";
 import logoPrincipal from './img/DeltaGoalPrincipal.png';
 
 
@@ -11,6 +12,11 @@ export default function Rupturas() {
   const [desfechos, setDesfechos] = useState([]);
   const [selectedRuptura, setSelectedRuptura] = useState(null); 
   const [selectedTeam, setSelectedTeam] = useState(null);
+
+  const options = {
+    legend: "none",
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,6 +93,15 @@ export default function Rupturas() {
                   <div className="desfechos">
                     <h2>Desfechos:</h2>
                   </div>
+                </div>
+                <div>
+                  <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="100%"
+                  data={desfechos}
+                  options={options}
+                />
                 </div>
 
                 <div className="visao-geral2">
