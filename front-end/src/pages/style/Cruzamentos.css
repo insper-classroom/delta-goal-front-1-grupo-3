@@ -33,3 +33,17 @@
 .chart{
     height: 10px;
 }
+.dados_cruzamento_campo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+  }
+  
+  .item {
+    margin-bottom: 10px;
+  }
+  
+  .chave {
+    font-weight: bold;
+    margin-right: 5px;
+  }
