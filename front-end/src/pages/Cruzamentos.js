@@ -47,8 +47,8 @@ export default function Partidas() {
         console.log(error); 
       }
     };
-    fetchData([]);
-  },);
+    fetchData();
+  },[]);
 
   const CruzamentosPalmeirasArray = Object.values(cruzamentosPalmeiras);
   const CruzamentosBragantinoArray = Object.values(cruzamentosBragantino);
