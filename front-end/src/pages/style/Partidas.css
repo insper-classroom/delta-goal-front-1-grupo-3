@@ -1,0 +1,32 @@
+.partidas-wrapper {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+.partidas-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5%
+}
+
+.partidas-content {
+  padding: 25px;
+  border-radius:7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.partidas-content a {
+  text-decoration: none;
+  color: #000;
+  text-decoration: underline;
+
+}
+
+.partidas-content a:hover {
+  color: #1647b9;
+  transition: 0.5s;
+}
