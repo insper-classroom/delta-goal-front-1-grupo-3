@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos } from '../functions/Requisicoes.js';
+import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos, fetchDesfechosCruzamentos } from '../functions/Requisicoes.js';
 import { Chart } from "react-google-charts";
 import Header from './Header';
 import './style/Cruzamentos.css';
@@ -7,6 +7,8 @@ import './style/Cruzamentos.css';
 export default function Partidas() {
   const [lancesPalmeiras, setLancesPalmeiras] = useState([]);
   const [lancesBragantino, setLancesBragantino] = useState([]);
+  const [desfechosPalmeiras, setDesfechosPalmeiras] = useState([]);
+  const [desfechosBragantino, setDesfechosBragantino] = useState([]);
   const [destaquesPalmeiras, setDestaquesPalmeiras] = useState([]);
   const [destaquesBragantino, setDestaquesBragantino] = useState([]);
   const [cruzamentosPalmeiras, setCruzamentosPalmeiras] = useState([]);
@@ -27,15 +29,18 @@ export default function Partidas() {
           const lances = await fetchLancesCruzamentos(team);
           const destaques = await fetchDestaquesCruzamentos(team);
           const cruzamentos = await fetchCruzamentos(team);
+          const desfechos = await fetchDesfechosCruzamentos(team);
           if (team === "Palmeiras") {
             setLancesPalmeiras(lances);
             setDestaquesPalmeiras(destaques);
             setCruzamentosPalmeiras(cruzamentos);
+            setDesfechosPalmeiras(desfechos);
           }
           else {
             setLancesBragantino(lances);
             setDestaquesBragantino(destaques);
             setCruzamentosBragantino(cruzamentos);
+            setDesfechosBragantino(desfechos);
           }
         }
       } catch (error) {
@@ -43,7 +48,7 @@ export default function Partidas() {
       }
     };
     fetchData();
-  }, []);
+  },);
 
   const CruzamentosPalmeirasArray = Object.values(cruzamentosPalmeiras);
   const CruzamentosBragantinoArray = Object.values(cruzamentosBragantino);
@@ -75,14 +80,21 @@ export default function Partidas() {
                 <h3>Jogadores envolvidos SEP</h3>
                 <Chart
                   chartType="BarChart"
-                  width="95%"
-                  height="95%"
+                  width="100%"
+                  height="100%"
                   data={lancesPalmeiras}
                   options={options}
                 />
               </div>
               <div className='desfechos-sep'>
                 <h3>Desfechos SEP</h3>
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="100%"
+                  data={desfechosPalmeiras}
+                  options={options}
+                />
               </div>
             </div>
 
@@ -109,6 +121,13 @@ export default function Partidas() {
               </div>
               <div className='desfechos-red'>
                 <h3>Desfechos RED</h3>
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="100%"
+                  data={desfechosBragantino}
+                  options={options}
+                />
               </div>
             </div>
           </div>

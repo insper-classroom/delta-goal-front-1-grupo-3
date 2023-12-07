@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header'; 
 import './style//Home.css';
+import Logout from '../functions/Logout';
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
           Desenvolvedores: Gabriel Mendes, João Gabriel Faraco, Jonas Pelegrina, Leonardo Freitas, Luigi Orlandi, Nina Savoy e Manoela Saragoça.
           Estudantes de Ciência de Computação do Insper. 
         </p>
+      <Logout />
       </div>
     </div>
   );

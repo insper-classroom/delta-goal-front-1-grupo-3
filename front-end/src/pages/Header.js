@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './style/Header.css'; 
-import Logout from '../functions/Logout';
 
 const Header = () => {
   return (
@@ -10,7 +9,6 @@ const Header = () => {
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/partidas">Partidas</Link></li>
-          <li><Logout /></li>
         </ul>
       </nav>
     </header>

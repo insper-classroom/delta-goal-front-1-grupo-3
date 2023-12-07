@@ -3,8 +3,6 @@ import './style/Rupturas.css';
 import { fetchDestaques, fetchLances, fetchDesfechos } from '../functions/Requisicoes.js';
 import Header from './Header';
 import { Chart } from "react-google-charts";
-import logoPrincipal from './img/DeltaGoalPrincipal.png';
-
 
 export default function Rupturas() {
   const [rupturas, setRupturas] = useState([]);
@@ -16,7 +14,6 @@ export default function Rupturas() {
   const options = {
     legend: "none",
   };
-
 
   useEffect(() => {
     const fetchData = async () => {
