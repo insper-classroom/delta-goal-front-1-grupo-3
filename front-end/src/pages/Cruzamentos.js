@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos, fetchDesfechosCruzamentos } from '../functions/Requisicoes.js';
+import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos, fetchDesfechosCruzamentos, fetchCruzamentosPorcentagem } from '../functions/Requisicoes.js';
 import { Chart } from "react-google-charts";
 import Header from './Header';
 import './style/Cruzamentos.css';
@@ -13,6 +13,7 @@ export default function Partidas() {
   const [destaquesBragantino, setDestaquesBragantino] = useState([]);
   const [cruzamentosPalmeiras, setCruzamentosPalmeiras] = useState([]);
   const [cruzamentosBragantino, setCruzamentosBragantino] = useState([]);
+  const [porcentagemPalmeiras, setPorcentagemPalmeiras] = useState([]);
 
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
 
@@ -44,11 +45,13 @@ export default function Partidas() {
           const destaques = await fetchDestaquesCruzamentos(team);
           const cruzamentos = await fetchCruzamentos(team);
           const desfechos = await fetchDesfechosCruzamentos(team);
+          const porcentagem = await fetchCruzamentosPorcentagem(team)
           if (team === "Palmeiras") {
             setLancesPalmeiras(lances);
             setDestaquesPalmeiras(destaques);
             setCruzamentosPalmeiras(cruzamentos);
             setDesfechosPalmeiras(desfechos);
+            setPorcentagemPalmeiras(porcentagem)
           }
           else {
             setLancesBragantino(lances);
@@ -76,8 +79,16 @@ export default function Partidas() {
         <div className="visao-geral-cruz">
         <h2>Visão Geral</h2>
         <div className='dados_cruzamento'>
-          <div className="campo-futebol"><img src="campo.png" alt="Campo de futebol" /></div>
-          
+          <div className="campo-futebol"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
+          <div className='dados_cruzamento_campo'>
+            {/* {JSON.stringify(porcentagemPalmeiras)} */}
+            {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
+        <div key={key} className="item">
+          <span className="chave"> {key}:</span>
+          <span className="valor">{value}%/</span>
+        </div>
+      ))}
+          </div>
           <div className="detalhes-cruzamentos">
             <div className="infos-palmeiras">
               <div className='destaques-sep'>
