@@ -10,11 +10,13 @@
 
 }
 .envolvidos-sep{
-    height: 200px;
+    height: 100%;
+    width: 100%;
 
 }
 .desfechos-sep{
-    height: 150px;
+    height: 100%;
+    width: 100%;
 
 }
 
@@ -23,11 +25,13 @@
 
 }
 .envolvidos-red{
-    height: 200px;
+    height: 100%;
+    width: 100%;
 
 }
 .desfechos-red{
-    height: 150px;
+    height: 100%;
+    width: 100%;
 
 }
 .chart{

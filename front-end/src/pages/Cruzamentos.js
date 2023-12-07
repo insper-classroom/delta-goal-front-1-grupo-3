@@ -17,9 +17,23 @@ export default function Partidas() {
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
 
   const options = {
-    legend: "none",
+    legend: 'none',
+    tooltip: { isHtml: true, trigger: 'selection' }, // Use HTML tooltip features
+    chartArea: { left: "5%", top: "5%", width: "90%", height: "90%" }, // Increase chart area
+    pieSliceText: 'percentage', // You can also set this to 'value' or 'label' depending on what you want to display
+    pieHole: 0.4, // If you want a donut chart
+    is3D: true,
   };
+  
 
+  const baroptions = {
+    legend: { position: 'none' },
+    colors: ['#ff8c00'], // Set the bars to an orange color
+    // ... other options as needed
+  };
+  
+  
+  
   const teams = ["Palmeiras", "Red Bull Bragantino"]
 
   useEffect(() => {
@@ -79,11 +93,11 @@ export default function Partidas() {
               <div className='envolvidos-sep'>
                 <h3>Jogadores envolvidos SEP</h3>
                 <Chart
-                  chartType="BarChart"
+                  chartType="Bar"
                   width="100%"
                   height="100%"
                   data={lancesPalmeiras}
-                  options={options}
+                  options={baroptions}
                 />
               </div>
               <div className='desfechos-sep'>
@@ -112,11 +126,11 @@ export default function Partidas() {
               <div className='envolvidos-red'>
                 <h3>Jogadores envolvidos RED</h3>
                 <Chart
-                  chartType="BarChart"
-                  width="95%"
-                  height="95%"
+                  chartType="Bar"
+                  width="100%"
+                  height="100%"
                   data={lancesBragantino}
-                  options={options}
+                  options={baroptions}
                 />
               </div>
               <div className='desfechos-red'>
