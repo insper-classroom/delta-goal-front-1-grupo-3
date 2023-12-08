@@ -96,6 +96,7 @@ export default function Rupturas() {
 
       {selectedTeam ? (
         <>
+
           <div className='container'>
             <div className="visao-geral">
               <h2>RUPTURAS</h2>
@@ -103,7 +104,6 @@ export default function Rupturas() {
                 <img src="campo-ruptura.jpeg" alt="Campo de futebol" />
               </div>
               <div className='dados_cruzamento_campo'>
-            {/* {JSON.stringify(porcentagemPalmeiras)} */}
             {Object.entries(porcentagemruptura).map(([key, value]) => (
         <div key={key} className="item">
           <span className="chave"> {key}:</span>
@@ -111,6 +111,7 @@ export default function Rupturas() {
         </div>
       ))}
           </div>
+            <div className="destaques-desfechos">
               <div className="destaques">
                 <h2>Maior número de rupturas:</h2>
                 <ul>
@@ -123,18 +124,17 @@ export default function Rupturas() {
               </div>
               <div className="desfechos">
                 <h2>Desfechos:</h2>
+                <Chart
+                  chartType="PieChart"
+                  width="100%"
+                  height="100%"
+                  data={desfechos}
+                  options={options}
+                />
               </div>
             </div>
-            <div>
-              <Chart
-                chartType="PieChart"
-                width="100%"
-                height="100%"
-                data={desfechos}
-                options={options}
-              />
             </div>
-
+    
             <div className="visao-geral2">
               <h2>Lances</h2>
               <div className="lista-lances" style={{ width: '95%' }}>
@@ -151,6 +151,7 @@ export default function Rupturas() {
                   </button>
                 ))}
               </div>
+
 
               <div className="video-container"style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
                 <ReactPlayer
