@@ -1,45 +1,54 @@
 .container {
     display: flex;
     flex-direction: row;
-    border: 10px solid red; 
+    /* border: 10px solid red;  */
+    height:150%;
 }
-.visao-geral {
-    border: 1px solid #000000;
+.rupturas-title{
+    padding-left: 3%;
 }
-.visao-geral, .lances {
+/* .visao-geral_ruptura {
+    /* border: 10px solid #000000; 
+} */
+.visao-geral_ruptura, .lances {
     gap: 10px;
 }
 
-.campo-futebol, .destaques, .envolvidos, .desfechos {
+.campo-futebol-ruptura, .destaques, .envolvidos, .desfechos {
     padding: 10px; /* Espaçamento interno */
     height: 100px; /* Altura exemplo, ajuste conforme necessário */
 }
 
 /* Simula um campo de futebol */
-.campo-futebol {
+.campo-futebol-ruptura {
+    width: 80%;
     /* You can set a specific height or leave it as auto to maintain aspect ratio */
+    /* border:10px solid black; */
     height: auto;
-    padding-left: 10%;
+    padding-left:10%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .campo-futebol img {
-    width: 60%; /* This will make the image fill the container */
+  .campo-futebol-ruptura img {
+    width: 100%; /* This will make the image fill the container */
     max-width: none; /* Remove the max-width constraint */
     height: auto; /* Maintain aspect ratio */
   }
   
+  .visao-geral2-rupturas{
+     width: 55%;
+  }
 
 /* Container para o vídeo */
-.video-container {
+.video-container-rupturas {
     border: 0px solid #ccc; /* Borda para o vídeo */
     padding: 10px; /* Espaçamento interno */
     height: 200px; /* Altura exemplo, ajuste conforme necessário */
 }
 
-video {
+video{
     width: 100%; /* O vídeo preenche o container */
     height: 100%; /* Ajusta a altura para preencher o container */
 }
@@ -72,7 +81,29 @@ video {
     padding: 1rem;
 }
 
-.destaques-desfechos {
+.destaques-desfechos-rupturas {
     display: flex;
-    flex-direction: column;
+    width: 85%;
+    flex-direction: row;
+    /* border: 10px solid red; */
+    padding-left: 8%;
+}
+.destaques-rupturas{
+    /* border: 10px solid black; */
+    width: 60%;
+}
+.desfechos-rupturas{
+    /* border: 10px solid black; */
+    width: 60%;
+   padding-left: 10%;
+}
+.grafico-rupturas{
+    width: 50%;
+
+}
+.frequencia-rupturas{
+    margin-left: 5%;
+}
+.grafico-imagem-ruptura{
+    margin-top: -14%;
 }
