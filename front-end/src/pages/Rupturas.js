@@ -51,7 +51,7 @@ export default function Rupturas() {
 
   useEffect(() => {
     if (selectedRuptura) {
-      const [hours, minutes, seconds] = selectedRuptura.inicio_ruptura.split(':').map(Number);
+      const [hours, minutes, seconds] = selectedRuptura.instante_ruptura.split(':').map(Number);
       const startTimeInSeconds = hours * 3600 + minutes * 60 + seconds - 5; // 5 segundos antes do início
       setVideoStartTime(startTimeInSeconds);
       setIsPlaying(true);
@@ -252,7 +252,7 @@ export default function Rupturas() {
       </div>
 
       <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
-      <div className="lista-lances-rup" style={{ width: '95%' }}>
+      <div className="lista-lances-rup" style={{ width: '168.5%' }}>
         {rupturasArray[0] && rupturasArray[0]
           .filter(ruptura => (
             (selectedZona === '' || ruptura.zona_defesa === selectedZona) &&
@@ -269,22 +269,21 @@ export default function Rupturas() {
         </div>
       )}
     </div>
-    
-            <div className="video-container-rupturas" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
-              <ReactPlayer
-                ref={playerRef}
-                url="https://www.youtube.com/watch?v=vqguX62PKFg"
-                playing={isPlaying}
-                controls
-                width="94.85%"
-                height="99%"
-                style={{ position: 'absolute', top: '50%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
-                onProgress={handleVideoProgress}
-              />
-            </div>
-            {exibirDetalhesRuptura()}
+          <div className="video-container-rupturas" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
+            <ReactPlayer
+              ref={playerRef}
+              url="https://www.youtube.com/watch?v=vqguX62PKFg"
+              playing={isPlaying}
+              controls
+              width="92.7%"
+              height="84%"
+              style={{ position: 'absolute', top: '50%', left: '46.35%', transform: 'translate(-50%, -52.5%)', border: 'none', outline: 'none' }}
+              onProgress={handleVideoProgress}
+            />
           </div>
+          {exibirDetalhesRuptura()}
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
+}
