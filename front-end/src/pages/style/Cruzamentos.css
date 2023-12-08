@@ -15,8 +15,7 @@ width: 100%;
     gap: 10%;
 }
 .destaques-sep{
-    height: 150px;
-
+    height: 10%;
 }
 .envolvidos-sep{
     height: 100%;
@@ -30,7 +29,7 @@ width: 100%;
 }
 
 .destaques-red{
-    height: 150px;
+    height: 10%;
 
 }
 .envolvidos-red{
@@ -86,8 +85,9 @@ width: 100%;
 .detalhes-cruzamentos {
     display: flex;
     flex-direction: row;
+    gap: 20%;
     align-items: center;
-    border:5px solid black 
+    margin-left: 5%;
 }
 
 .lista-lances-cruz {
@@ -112,9 +112,9 @@ width: 100%;
     width: 30%;
   }
 
-  .video-container-cruzamento{
-      height: 20%;
-    }
+.video-container-cruzamento{
+    height: 20%;
+}
     
 .cruzamento-info-string {
     margin-top: 25px;
@@ -135,5 +135,33 @@ width: 100%;
 
 .texto-font {
     font-weight: bold;
+    font-size: 18px;
+}
+
+.detalhes-cruzamento-selecionado {
+    margin-top: 5%;
+    display: flex;
+    height: 20%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cruzamento-atacando {
+    height: 100%;
+    width: 25%;
+}
+
+.cruzamento-defendendo {
+    height: 100%;
+    width: 30%;
+}
+
+.list {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.list li {
+    padding-bottom: 10px;
     font-size: 18px;
 }

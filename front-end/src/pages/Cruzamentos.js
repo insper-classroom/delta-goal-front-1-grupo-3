@@ -92,32 +92,6 @@ export default function Partidas() {
   const DestaquesPalmeirasArray = Object.values(destaquesPalmeiras);
   const DestaquesBragantinoArray = Object.values(destaquesBragantino);
 
-  const exibirDetalhesCruzamento = () => {
-    if (selectedCruzamento) {
-      return (
-      <div className="detalhes-cruzamentos">
-        <div>
-          <h3>Atacando:</h3>
-          <ul>
-            {selectedCruzamento.nome_jogadores_time_cruzando.map((jogador, index) => (
-              <li key={index}>{jogador}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3>Defendendo:</h3>
-          <ul>
-            {selectedCruzamento.nome_jogadores_time_defendendo.map((jogador, index) => (
-              <li key={index}>{jogador}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      );
-    }
-  }
-
   const BotaoCruzamento = (cruzamento, index, imagemTime) => {
     const buttonID = `${index + 1}`;
     return (
@@ -167,7 +141,7 @@ export default function Partidas() {
             <div className="infos-palmeiras">
               <div className='destaques-sep'>
                 <h3 className='texto-font'>Destaques SEP</h3>
-                { <ul>
+                {<ul className='list'>
                   {DestaquesPalmeirasArray[0] && DestaquesPalmeirasArray[0].map((destaque, index) => (
                     <li key={index} value={index}>
                     {destaque.nome} - {destaque.cruzamentos}
@@ -200,7 +174,7 @@ export default function Partidas() {
             <div className="infos-bragantino">
               <div className='destaques-red'>
                 <h3 className='texto-font'>Destaques RED</h3>
-                  <ul>
+                  <ul className='list'>
                     {DestaquesBragantinoArray[0] && DestaquesBragantinoArray[0].map((destaque, index) => (
                     <li key={index} value={index}>
                     {destaque.nome} - {destaque.cruzamentos}
@@ -261,7 +235,29 @@ export default function Partidas() {
             onProgress={handleVideoProgress}
           />
         </div>
-        {exibirDetalhesCruzamento()}
+
+          <div className="detalhes-cruzamento-selecionado">
+
+          <div className='cruzamento-atacando'>
+            <h3>Atacando:</h3>
+            <ul className='list'>
+              {selectedCruzamento && selectedCruzamento.nome_jogadores_time_cruzando.map((jogador, index) => (
+                <li key={index}>{jogador}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className='cruzamento-defendendo'>
+            <h3>Defendendo:</h3>
+            <ul className='list'>
+              {selectedCruzamento && selectedCruzamento.nome_jogadores_time_defendendo.map((jogador, index) => (
+                <li key={index}>{jogador}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+
       </div>
     </div>
     </>

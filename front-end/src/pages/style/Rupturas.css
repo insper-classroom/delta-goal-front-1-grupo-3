@@ -74,15 +74,15 @@ video {
     color: #ffffff;
 }
 .selecionar-time{
-    background-color: #009FE3;
-    padding: 1rem;
+    width: 80%;
+    margin-left: 5%;
 }
 
 .destaques-desfechos-rupturas {
     display: flex;
     width: 85%;
     flex-direction: row;
-    padding-left: 8%;
+    margin-left: 5%;
 }
 .destaques-rupturas{
     width: 60%;
@@ -92,8 +92,8 @@ video {
    padding-left: 10%;
 }
 .grafico-rupturas{
-    width: 50%;
-
+    width: 60%;
+    margin-top: 30px;
 }
 .permanencia-rupturas{
     margin-left: 5%;
@@ -115,5 +115,12 @@ video {
     margin-top: 20px;
     font-weight: 500;
     font-size: 18px;
+    margin-bottom: -10px;
+}
+
+.dados-cruzamento-campo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5%;
     margin-bottom: -10px;
 }

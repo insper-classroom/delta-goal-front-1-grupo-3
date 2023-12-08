@@ -100,45 +100,42 @@ export default function Rupturas() {
       );
     };
 
-  return (
-    <>
-      <Header />
-      <div className="selecionar-time">
-        <h2>Selecione um time:</h2>
-        {['Red Bull Bragantino', 'Palmeiras'].map((team, index) => (
-          <button
-            className={`button-site ${selectedTeam === team ? 'button-selected' : ''}`}
-            key={index}
-            onClick={() => {
-              setSelectedTeam(team);
-            }}
-          >
-            {team}
-          </button>
-        ))}
-      </div>
-
-      {selectedTeam ? (
-        <>
-          <div className='container'>
-            <div className="visao-gera_rupturas">
-              <h2 className='rupturas-title'>Rupturas</h2>
-              <h3 className='permanencia-rupturas'>Permanência nas sub-zonas</h3>
-              <div className="campo-futebol-ruptura">
-                <img src="campo-ruptura.jpeg" alt="Campo de futebol" />
-              </div>
-              <div className='dados_cruzamento_campo'>
-            {Object.entries(porcentagemruptura).map(([key, value]) => (
-        <div key={key} className="item">
-          <span className="chave"> {key}:</span>
-          <span className="valor">{value}%/</span>
-        </div>
-      ))}
-          </div>
+    return (
+      <>
+        <Header />
+        <div className='container'>
+          <div className="visao-gera_rupturas">
+            <div className="selecionar-time">
+              <h2>Selecione um time:</h2>
+              {['Red Bull Bragantino', 'Palmeiras'].map((team, index) => (
+                <button
+                  className={`button-site ${selectedTeam === team ? 'button-selected' : ''}`}
+                  key={index}
+                  onClick={() => {
+                    setSelectedTeam(team);
+                  }}
+                >
+                  {team}
+                </button>
+              ))}
+            </div>
+            <h2 className='rupturas-title'>Rupturas</h2>
+            <h3 className='permanencia-rupturas'>Permanência nas sub-zonas</h3>
+            <div className="campo-futebol-ruptura">
+              <img src="campo-ruptura.jpeg" alt="Campo de futebol" />
+            </div>
+            <div className='dados-cruzamento-campo'>
+              {Object.entries(porcentagemruptura).map(([key, value]) => (
+                <div key={key} className="item">
+                  <span className="chave"> {key}:</span>
+                  <span className="valor">{value}%/</span>
+                </div>
+              ))}
+            </div>
             <div className="destaques-desfechos-rupturas">
               <div className="destaques-rupturas">
                 <h2>Maior número de rupturas:</h2>
-                <ul>
+                <ul className='list'>
                   {destaquesArray[0] && destaquesArray[0].map((destaque, index) => (
                     <li key={index} value={index}>
                       {destaque.nome}
@@ -149,52 +146,47 @@ export default function Rupturas() {
               <div className="desfechos-rupturas">
                 <h2>Desfechos:</h2>
                 <div className='grafico-rupturas'>
-                <Chart
-                className='grafico-imagem-ruptura'
-                  chartType="PieChart"
-                  width="120%"
-                  height="120%"
-                  data={desfechos}
-                  options={options}
-                />
+                  <Chart
+                    className='grafico-imagem-ruptura'
+                    chartType="PieChart"
+                    width="120%"
+                    height="120%"
+                    data={desfechos}
+                    options={options}
+                  />
                 </div>
               </div>
             </div>
-            </div>
-    
-            <div className="visao-geral2-rupturas">
-              <h2>Lances</h2>
-              
-              <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
-              <div className="lista-lances-rup" style={{ width: '95%' }}>
-                {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-                  BotaoRuptura(ruptura, index)
-                ))}
-              </div>
-              {selectedRuptura && (
-                <div className="ruptura-info-string">
-                  {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
-                </div>)}
-
-              <div className="video-container-rupturas"style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
-                <ReactPlayer
-                  ref={playerRef}
-                  url="https://www.youtube.com/watch?v=vqguX62PKFg"
-                  playing={isPlaying}
-                  controls
-                  width="94.85%"
-                  height="99%"
-                  style={{ position: 'absolute', top: '50%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
-                  onProgress={handleVideoProgress}
-                />
-              </div>
-              {exibirDetalhesRuptura()}
-            </div>
           </div>
-        </>
-      ) : (
-        <h2>Selecione um time para ver os destaques e lances</h2>
-      )}
-    </>
-  );
-}
+    
+          <div className="visao-geral2-rupturas">
+            <h2>Lances</h2>
+            <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
+            <div className="lista-lances-rup" style={{ width: '95%' }}>
+              {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
+                BotaoRuptura(ruptura, index)
+              ))}
+            </div>
+            {selectedRuptura && (
+              <div className="ruptura-info-string">
+                {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
+              </div>)}
+    
+            <div className="video-container-rupturas" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
+              <ReactPlayer
+                ref={playerRef}
+                url="https://www.youtube.com/watch?v=vqguX62PKFg"
+                playing={isPlaying}
+                controls
+                width="94.85%"
+                height="99%"
+                style={{ position: 'absolute', top: '50%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
+                onProgress={handleVideoProgress}
+              />
+            </div>
+            {exibirDetalhesRuptura()}
+          </div>
+        </div>
+      </>
+    );
+  }
