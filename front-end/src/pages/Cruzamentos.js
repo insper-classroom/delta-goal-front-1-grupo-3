@@ -74,7 +74,7 @@ export default function Partidas() {
       }
     };
     fetchData();
-  },[]);
+  });
 
   useEffect(() => {
     if (selectedCruzamento) {
@@ -83,6 +83,7 @@ export default function Partidas() {
       setVideoStartTime(startTimeInSeconds);
       setIsPlaying(true);
       playerRef.current.seekTo(startTimeInSeconds);
+      
     }
   }, [selectedCruzamento]);
 
@@ -90,6 +91,60 @@ export default function Partidas() {
   const CruzamentosBragantinoArray = Object.values(cruzamentosBragantino);
   const DestaquesPalmeirasArray = Object.values(destaquesPalmeiras);
   const DestaquesBragantinoArray = Object.values(destaquesBragantino);
+
+  const exibirDetalhesCruzamento = () => {
+    if (selectedCruzamento) {
+      return (
+      <div className="detalhes-cruzamentos">
+        <div>
+          <h3>Atacando:</h3>
+          <ul>
+            {selectedCruzamento.nome_jogadores_time_cruzando.map((jogador, index) => (
+              <li key={index}>{jogador}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3>Defendendo:</h3>
+          <ul>
+            {selectedCruzamento.nome_jogadores_time_defendendo.map((jogador, index) => (
+              <li key={index}>{jogador}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      );
+    }
+  }
+
+  const BotaoCruzamento = (cruzamento, index, imagemTime) => {
+    const buttonID = `${index + 1}`;
+    return (
+    <button
+      id={buttonID}
+      className={`button-site ${selectedCruzamento === cruzamento ? 'button-selected' : ''}`}
+      key={index}
+      value={index}
+      onClick={() => {
+        setSelectedCruzamento({ ...cruzamento, id: buttonID });
+      }}
+    >
+      <div className="botao-cruzamento-container">
+        <div className='left-content'>
+          {imagemTime && <img src={imagemTime} alt="Time" className="time-imagem" style={{ width: '25px', height: '25px', marginLeft: '10px' }}/>}
+          <span className="cruzamento-instante">{`Cruzamento #${(index + 1).toString().padStart(3, '0')}`}</span>
+        </div>
+        <div className='right-content'>
+          <span className="cruzamento-instante">{cruzamento.instante_cruzamento} | {cruzamento.desfecho} Zona: {cruzamento.zona}</span>
+        </div>
+      </div>
+    </button>
+      );
+    };
+
+    const imagemPalmeiras = require('./img/palmeiras-logo.png');
+    const imagemBragantino = require('./img/bragantino-logo.png');
 
   return (
     <>
@@ -101,13 +156,12 @@ export default function Partidas() {
         <div className='dados_cruzamento'>
           <div className="campo-futebol-cruzamento"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
           <div className='dados_cruzamento_campo'>
-            {/* {JSON.stringify(porcentagemPalmeiras)} */}
-            {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
+            {/* {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
         <div key={key} className="item">
           <span className="chave"> {key}:</span>
           <span className="valor">{value}%/</span>
         </div>
-      ))}
+      ))} */}
           </div>
           <div className="detalhes-cruzamentos">
             <div className="infos-palmeiras">
@@ -179,34 +233,20 @@ export default function Partidas() {
         </div>
         </div>
 
-      <div className='visao-geral2'>
+      <div className='visao-geral2-cruz'>
         <h2>Lances</h2>
-        <div className="lista-lances" style={{ width: '95%' }}>
+        <div className="lista-lances-cruz" style={{ width: '95%' }}>
           {CruzamentosPalmeirasArray[0] && CruzamentosPalmeirasArray[0].map((cruzamento, index) => (
-            <button 
-              className={`button-site ${selectedCruzamento === cruzamento ? 'button-selected' : ''}`}
-              key = {index}
-              value={index}
-              onClick={() => {
-                const selectedCruzamento = CruzamentosPalmeirasArray[0][index]
-                setSelectedCruzamento(selectedCruzamento)
-              }}>
-              {cruzamento.instante_cruzamento}
-            </button>
+            BotaoCruzamento(cruzamento, index, imagemPalmeiras)
           ))}
           {CruzamentosBragantinoArray[0] && CruzamentosBragantinoArray[0].map((cruzamento, index) => (
-              <button 
-                className={`button-site ${selectedCruzamento === cruzamento ? 'button-selected' : ''}`}
-                key = {index}
-                value={index}
-                onClick={() => {
-                  const selectedCruzamento = CruzamentosBragantinoArray[0][index]
-                  setSelectedCruzamento(selectedCruzamento)
-                }}>
-                {cruzamento.instante_cruzamento}
-              </button>
+            BotaoCruzamento(cruzamento, index, imagemBragantino)
           ))}
         </div>
+        {selectedCruzamento && (
+          <div className="cruzamento-info-string">
+            {`Cruzamento #${(selectedCruzamento.id).toString().padStart(3, '0')}`}
+          </div>)}
         <div className="video-container" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
           <ReactPlayer
             ref={playerRef}
@@ -215,12 +255,13 @@ export default function Partidas() {
             controls
             width="94.85%"
             height="99%"
-            style={{ position: 'absolute', top: '50%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
+            style={{ position: 'absolute', top: '55%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
             onProgress={handleVideoProgress}
           />
         </div>
+        {exibirDetalhesCruzamento()}
       </div>
-      </div>
+    </div>
     </>
   );
 }
