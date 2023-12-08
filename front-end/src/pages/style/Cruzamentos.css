@@ -4,7 +4,9 @@
     gap: 20px; 
     margin: 20px;
 }
-
+.visao-geral-cruz{
+width: 100%;
+}
 .detalhes-cruzamentos {
     margin-left: 10%;
     display: flex;
@@ -43,14 +45,17 @@
 .chart{
     height: 10px;
 }
-.dados_cruzamento_campo {
+.dados_cruzamento_campo_cruzamento {
     display: flex;
-    flex-direction: row;
-    margin-left: 10%;
+    flex-direction:row;
+    width: 70%;
+    height: 40%;
+    padding-top: 2%;
   }
   
-.item {
+.item_cruzamento {
     margin-bottom: 10px;    
+   font-size: 13px
 }
 
 .chave {

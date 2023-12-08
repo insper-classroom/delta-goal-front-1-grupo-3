@@ -6,7 +6,6 @@
 .rupturas-title{
     margin-left: 5%;
 }
-
 .visao-geral_ruptura, .lances {
     gap: 10px;
 }
@@ -29,6 +28,12 @@
     width: 100%; 
     max-width: none; 
     height: auto; 
+  }
+  .dados_cruzamento_campo {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin-left: 5%;
   }
   
   .visao-geral2-rupturas{
@@ -61,6 +66,7 @@ video {
     height: 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     width: 100%;
+    margin-top: 0px;
 }
 
 .button-selected {
@@ -117,4 +123,11 @@ video {
     flex-direction: row;
     margin-left: 5%;
     margin-bottom: -10px;
+}
+
+.detalhes-ruptura-dados{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
