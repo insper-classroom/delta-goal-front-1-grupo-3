@@ -37,7 +37,7 @@
   }
   
   .visao-geral2-rupturas{
-     width: 55%;
+     width: 50%;
   }
 
 .video-container-rupturas {
@@ -65,7 +65,7 @@ video {
     overflow-y: scroll;
     height: 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    width: 100%;
+    width: 100% !important;
     margin-top: 0px;
 }
 

@@ -51,6 +51,7 @@ width: 100%;
     width: 70%;
     height: 40%;
     padding-top: 2%;
+    margin-left: 5%;
   }
   
 .item_cruzamento {
@@ -165,3 +166,14 @@ width: 100%;
     padding-bottom: 10px;
     font-size: 18px;
 }
+
+select {
+    width: 10%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }

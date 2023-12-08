@@ -16,6 +16,8 @@ export default function Partidas() {
   const [cruzamentosBragantino, setCruzamentosBragantino] = useState([]);
   const [porcentagemPalmeiras, setPorcentagemPalmeiras] = useState([]);
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
+  const [selectedZona, setSelectedZona] = useState('');
+  const [selectedTipo, setSelectedTipo] = useState('');
 
   const [videoStartTime, setVideoStartTime] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -120,6 +122,7 @@ export default function Partidas() {
     const imagemPalmeiras = require('./img/palmeiras-logo.png');
     const imagemBragantino = require('./img/bragantino-logo.png');
 
+
   return (
     <>
       <Header />
@@ -209,35 +212,46 @@ export default function Partidas() {
 
       <div className='visao-geral2-cruz'>
         <h2>Lances</h2>
-        {/* Filtro de cruzamento por zona e tipo */}
         <div>
-         <label htmlFor="zona">Zona:</label>
-            <select name="zona" id="zona">
-              <option value="todas">Todas</option>
-              <option value="1">1</option>
-              <option value="2">2</option>             
-            </select>
-            </div>
+          <label htmlFor="zona">Zona:</label>
+          <select name="zona" id="zona" value={selectedZona} onChange={(e) => setSelectedZona(e.target.value)}>
+            <option value="">Todos</option>
+            {CruzamentosPalmeirasArray[0] && [...new Set(CruzamentosPalmeirasArray[0].map(cruzamento => cruzamento.zona))].map((zona, index) => (
+              <option key={index} value={zona}>{zona}</option>
+            ))}
+          </select>
+        </div>
 
-            <div>
-            <label htmlFor="tipo">Tipo:</label>
-            <select name="tipo" id="tipo">
-              <option value="todas">Todas</option>
-              <option value="cruzamento">Cruzamento</option>
-              <option value="cruzamento-rasteiro">Cruzamento Rasteiro</option>
-              <option value="cruzamento-alto">Cruzamento Alto</option>
-            </select>
-            </div>
+        <div>
+          <label htmlFor="tipo">Tipo:</label>
+          <select name="tipo" id="tipo" value={selectedTipo} onChange={(e) => setSelectedTipo(e.target.value)}>
+            <option value="">Todos</option>
+            {CruzamentosPalmeirasArray[0] && [...new Set(CruzamentosPalmeirasArray[0].map(cruzamento => cruzamento.desfecho))].map((desfecho, index) => (
+              <option key={index} value={desfecho}>{desfecho}</option>
+            ))}
+          </select>
+        </div>
 
         <h3 className='textos-informacao-h3'>Lista de Cruzamento</h3>
         <div className="lista-lances-cruz" style={{ width: '95%' }}>
-          {CruzamentosPalmeirasArray[0] && CruzamentosPalmeirasArray[0].map((cruzamento, index) => (
-            BotaoCruzamento(cruzamento, index, imagemPalmeiras)
-          ))}
-          {CruzamentosBragantinoArray[0] && CruzamentosBragantinoArray[0].map((cruzamento, index) => (
-            BotaoCruzamento(cruzamento, index, imagemBragantino)
-          ))}
+          {CruzamentosPalmeirasArray[0] && CruzamentosPalmeirasArray[0]
+            .filter(cruzamento => (
+              (selectedZona === '' || cruzamento.zona === selectedZona) &&
+              (selectedTipo === '' || cruzamento.desfecho === selectedTipo)
+            ))
+            .map((filteredCruzamento, index) => (
+              BotaoCruzamento(filteredCruzamento, index, imagemPalmeiras)
+            ))}
+          {CruzamentosBragantinoArray[0] && CruzamentosBragantinoArray[0]
+            .filter(cruzamento => (
+              (selectedZona === '' || cruzamento.zona === selectedZona) &&
+              (selectedTipo === '' || cruzamento.desfecho === selectedTipo)
+            ))
+            .map((filteredCruzamento, index) => (
+              BotaoCruzamento(filteredCruzamento, index, imagemBragantino)
+            ))}
         </div>
+
         {selectedCruzamento && (
           <div className="cruzamento-info-string">
             {`Cruzamento #${(selectedCruzamento.id).toString().padStart(3, '0')}`}

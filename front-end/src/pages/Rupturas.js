@@ -62,33 +62,6 @@ export default function Rupturas() {
   const rupturasArray = Object.values(rupturas);
   const destaquesArray = Object.values(destaques);
 
-  // const exibirDetalhesRuptura = () => {
-  //   if (selectedRuptura) {
-  //     return (
-  //       <div className="detalhes-ruptura">
-  //       <h2>DETALHES DA RUPTURA</h2>
-  //       <div className='detalhes-ruptura-dados'>
-  //         <div className='detalhes-ruptura-1'>
-  //         <h3>Posse de bola</h3>
-  //         <p>{selectedRuptura.nome_jogador_posse_bola}</p>
-  //         <h3>Jogador ruptura</h3>
-  //         <p>{selectedRuptura.nome_jogador_ruptura}</p>
-  //         </div>
-  //         <div className='detalhes-ruptura-2'>
-  //         <h3>Jogadores defesa</h3>
-          
-  //         {/* <p> {selectedRuptura.nomes_jogadores_defesa}</p> */}
-  //         </div>
-  //         <div className='detalhes-ruptura-3'>
-  //         <h3>Desfecho</h3>
-  //         <p>{selectedRuptura.desfecho}</p>
-  //       </div>
-  //       </div>
-  //       </div>
-  //     );
-  //   }
-  //   return null;
-  // };
   const exibirDetalhesRuptura = () => {
     if (selectedRuptura) {
       const nomesJogadoresDefesa = selectedRuptura.nomes_jogadores_defesa || '';
@@ -227,60 +200,59 @@ export default function Rupturas() {
             </div>
           </div>
     
-          <div className="visao-geral2-rupturas">
-            <h2>Lances</h2>
-            <div className="visao-geral2-rupturas">
-      <h2>Lances</h2>
-      <div>
-        <label htmlFor="zona">Zona:</label>
-        <select name="zona" id="zona" value={selectedZona} onChange={(e) => setSelectedZona(e.target.value)}>
-          <option value="">Todos</option>
-          {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-            <option key={index} value={ruptura.zona_defesa}>{ruptura.zona_defesa}</option>
-          ))}
-        </select>
-      </div>
+        <div className="visao-geral2-rupturas">
+          <h2>Lances</h2>
 
-      <div>
-        <label htmlFor="tipo">Tipo:</label>
-        <select name="tipo" id="tipo" value={selectedTipo} onChange={(e) => setSelectedTipo(e.target.value)}>
-          <option value="">Todos</option>
-          {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-            <option key={index} value={ruptura.desfecho}>{ruptura.desfecho}</option>
-          ))}
-        </select>
-      </div>
+            <div>
+              <label htmlFor="zona">Zona:</label>
+              <select name="zona" id="zona" value={selectedZona} onChange={(e) => setSelectedZona(e.target.value)}>
+                <option value="">Todos</option>
+                {rupturasArray[0] && [...new Set(rupturasArray[0].map(ruptura => ruptura.zona_defesa))].map((zona, index) => (
+                  <option key={index} value={zona}>{zona}</option>
+                ))}
+              </select>
+            </div>
 
-      <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
-      <div className="lista-lances-rup" style={{ width: '168.5%' }}>
-        {rupturasArray[0] && rupturasArray[0]
-          .filter(ruptura => (
-            (selectedZona === '' || ruptura.zona_defesa === selectedZona) &&
-            (selectedTipo === '' || ruptura.desfecho === selectedTipo)
-          ))
-          .map((filteredRuptura, index) => (
-            BotaoRuptura(filteredRuptura, index)
-          ))}
-      </div>
+            <div>
+              <label htmlFor="tipo">Tipo:</label>
+              <select name="tipo" id="tipo" value={selectedTipo} onChange={(e) => setSelectedTipo(e.target.value)}>
+                <option value="">Todos</option>
+                {rupturasArray[0] && [...new Set(rupturasArray[0].map(ruptura => ruptura.desfecho))].map((desfecho, index) => (
+                  <option key={index} value={desfecho}>{desfecho}</option>
+                ))}
+              </select>
+            </div>
 
-      {selectedRuptura && (
-        <div className="ruptura-info-string">
-          {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
-        </div>
-      )}
-    </div>
-          <div className="video-container-rupturas" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
-            <ReactPlayer
-              ref={playerRef}
-              url="https://www.youtube.com/watch?v=vqguX62PKFg"
-              playing={isPlaying}
-              controls
-              width="92.7%"
-              height="84%"
-              style={{ position: 'absolute', top: '50%', left: '46.35%', transform: 'translate(-50%, -52.5%)', border: 'none', outline: 'none' }}
-              onProgress={handleVideoProgress}
-            />
-          </div>
+            <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
+            <div className="lista-lances-rup">
+              {rupturasArray[0] && rupturasArray[0]
+                .filter(ruptura => (
+                  (selectedZona === '' || ruptura.zona_defesa === selectedZona) &&
+                  (selectedTipo === '' || ruptura.desfecho === selectedTipo)
+                ))
+                .map((filteredRuptura, index) => (
+                  BotaoRuptura(filteredRuptura, index)
+                ))}
+            </div>
+
+            {selectedRuptura && (
+              <div className="ruptura-info-string">
+                {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
+              </div>
+            )}
+
+            <div className="video-container-rupturas" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
+              <ReactPlayer
+                ref={playerRef}
+                url="https://www.youtube.com/watch?v=vqguX62PKFg"
+                playing={isPlaying}
+                controls
+                width="92.7%"
+                height="84%"
+                style={{ position: 'absolute', top: '50%', left: '46.35%', transform: 'translate(-50%, -52.5%)', border: 'none', outline: 'none' }}
+                onProgress={handleVideoProgress}
+              />
+            </div>
           {exibirDetalhesRuptura()}
         </div>
       </div>
