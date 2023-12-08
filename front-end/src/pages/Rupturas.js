@@ -61,15 +61,82 @@ export default function Rupturas() {
   const rupturasArray = Object.values(rupturas);
   const destaquesArray = Object.values(destaques);
 
+  // const exibirDetalhesRuptura = () => {
+  //   if (selectedRuptura) {
+  //     return (
+  //       <div className="detalhes-ruptura">
+  //       <h2>DETALHES DA RUPTURA</h2>
+  //       <div className='detalhes-ruptura-dados'>
+  //         <div className='detalhes-ruptura-1'>
+  //         <h3>Posse de bola</h3>
+  //         <p>{selectedRuptura.nome_jogador_posse_bola}</p>
+  //         <h3>Jogador ruptura</h3>
+  //         <p>{selectedRuptura.nome_jogador_ruptura}</p>
+  //         </div>
+  //         <div className='detalhes-ruptura-2'>
+  //         <h3>Jogadores defesa</h3>
+          
+  //         {/* <p> {selectedRuptura.nomes_jogadores_defesa}</p> */}
+  //         </div>
+  //         <div className='detalhes-ruptura-3'>
+  //         <h3>Desfecho</h3>
+  //         <p>{selectedRuptura.desfecho}</p>
+  //       </div>
+  //       </div>
+  //       </div>
+  //     );
+  //   }
+  //   return null;
+  // };
   const exibirDetalhesRuptura = () => {
     if (selectedRuptura) {
+      const nomesJogadoresDefesa = selectedRuptura.nomes_jogadores_defesa || '';
+  
+      const dividirNomes = () => {
+        const nomesIndividuais = [];
+        let nomeAtual = '';
+  
+        for (let i = 0; i < nomesJogadoresDefesa.length; i++) {
+          if (/[A-Z]/.test(nomesJogadoresDefesa[i])) {
+            if (nomeAtual !== '') {
+              nomesIndividuais.push(nomeAtual);
+            }
+            nomeAtual = nomesJogadoresDefesa[i];
+          } else {
+            nomeAtual += nomesJogadoresDefesa[i];
+          }
+        }
+  
+        if (nomeAtual !== '') {
+          nomesIndividuais.push(nomeAtual);
+        }
+  
+        return nomesIndividuais;
+      };
+  
+      const nomesIndividuais = dividirNomes();
+  
       return (
         <div className="detalhes-ruptura">
           <h2>DETALHES DA RUPTURA</h2>
-          <p>Posse de bola: {selectedRuptura.nome_jogador_posse_bola}</p>
-          <p>Jogadores defesa: {selectedRuptura.nomes_jogadores_defesa}</p>
-          <p>Desfecho: {selectedRuptura.desfecho}</p>
-          <p>Jogador: {selectedRuptura.nome_jogador_ruptura}</p>
+          <div className='detalhes-ruptura-dados'>
+            <div className='detalhes-ruptura-1'>
+              <h3>Posse de bola</h3>
+              <p>{selectedRuptura.nome_jogador_posse_bola}</p>
+              <h3>Jogador ruptura</h3>
+              <p>{selectedRuptura.nome_jogador_ruptura}</p>
+            </div>
+            <div className='detalhes-ruptura-2'>
+              <h3>Jogadores defesa</h3>
+              {nomesIndividuais.map((nome, index) => (
+                <p key={index}>{nome}</p>
+              ))}
+            </div>
+            <div className='detalhes-ruptura-3'>
+              <h3>Desfecho</h3>
+              <p>{selectedRuptura.desfecho}</p>
+            </div>
+          </div>
         </div>
       );
     }

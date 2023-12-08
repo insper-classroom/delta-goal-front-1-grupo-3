@@ -124,3 +124,10 @@ video {
     margin-left: 5%;
     margin-bottom: -10px;
 }
+
+.detalhes-ruptura-dados{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
