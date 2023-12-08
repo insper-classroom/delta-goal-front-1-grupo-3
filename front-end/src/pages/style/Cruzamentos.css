@@ -75,3 +75,9 @@
     justify-content: center;
     align-items: center;
   }
+
+.detalhes-cruzamentos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

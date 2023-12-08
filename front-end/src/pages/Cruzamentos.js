@@ -74,7 +74,7 @@ export default function Partidas() {
       }
     };
     fetchData();
-  },[]);
+  });
 
   useEffect(() => {
     if (selectedCruzamento) {
@@ -91,6 +91,32 @@ export default function Partidas() {
   const DestaquesPalmeirasArray = Object.values(destaquesPalmeiras);
   const DestaquesBragantinoArray = Object.values(destaquesBragantino);
 
+  const exibirDetalhesCruzamento = () => {
+    if (selectedCruzamento) {
+      return (
+      <div className="detalhes-cruzamentos">
+        <div>
+          <h3>Atacando:</h3>
+          <ul>
+            {selectedCruzamento.nome_jogadores_time_cruzando.map((jogador, index) => (
+              <li key={index}>{jogador}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3>Defendendo:</h3>
+          <ul>
+            {selectedCruzamento.nome_jogadores_time_defendendo.map((jogador, index) => (
+              <li key={index}>{jogador}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      );
+    }
+  }
+
   return (
     <>
       <Header />
@@ -101,13 +127,12 @@ export default function Partidas() {
         <div className='dados_cruzamento'>
           <div className="campo-futebol-cruzamento"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
           <div className='dados_cruzamento_campo'>
-            {/* {JSON.stringify(porcentagemPalmeiras)} */}
-            {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
+            {/* {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
         <div key={key} className="item">
           <span className="chave"> {key}:</span>
           <span className="valor">{value}%/</span>
         </div>
-      ))}
+      ))} */}
           </div>
           <div className="detalhes-cruzamentos">
             <div className="infos-palmeiras">
@@ -179,7 +204,7 @@ export default function Partidas() {
         </div>
         </div>
 
-      <div className='visao-geral2'>
+      <div className='visao-geral2-cruz'>
         <h2>Lances</h2>
         <div className="lista-lances" style={{ width: '95%' }}>
           {CruzamentosPalmeirasArray[0] && CruzamentosPalmeirasArray[0].map((cruzamento, index) => (
@@ -219,6 +244,7 @@ export default function Partidas() {
             onProgress={handleVideoProgress}
           />
         </div>
+        {exibirDetalhesCruzamento()}
       </div>
       </div>
     </>
