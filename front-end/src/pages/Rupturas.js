@@ -88,7 +88,7 @@ export default function Rupturas() {
         setSelectedRuptura({ ...ruptura, id: buttonID });
       }}
     >
-      <div className="botao-ruptura-container">
+      <div className="botao-cruzamento-container">
         <div className='left-content'>
           <span className="ruptura-instante">{`Ruptura #${(index + 1).toString().padStart(3, '0')}`}</span>
         </div>
@@ -122,8 +122,8 @@ export default function Rupturas() {
         <>
           <div className='container'>
             <div className="visao-gera_rupturas">
-              <h1 className='rupturas-title'>RUPTURAS</h1>
-              <h3 className='frequencia-rupturas'>Frequência nas zonas</h3>
+              <h2 className='rupturas-title'>Rupturas</h2>
+              <h3 className='permanencia-rupturas'>Permanência nas sub-zonas</h3>
               <div className="campo-futebol-ruptura">
                 <img src="campo-ruptura.jpeg" alt="Campo de futebol" />
               </div>
@@ -164,12 +164,17 @@ export default function Rupturas() {
     
             <div className="visao-geral2-rupturas">
               <h2>Lances</h2>
-              <div className="lista-lances" style={{ width: '95%' }}>
+              
+              <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
+              <div className="lista-lances-rup" style={{ width: '95%' }}>
                 {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
                   BotaoRuptura(ruptura, index)
                 ))}
               </div>
-
+              {selectedRuptura && (
+                <div className="ruptura-info-string">
+                  {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
+                </div>)}
 
               <div className="video-container-rupturas"style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
                 <ReactPlayer

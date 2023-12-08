@@ -151,8 +151,8 @@ export default function Partidas() {
       <Header />
       <div className="container-cruzamentos">
         <div className="visao-geral-cruz">
-        <h1>Visão Geral</h1>
-        <h3 className='frequencia'>Frequência nas zonas</h3>
+        <h2 className='titulo-h2-cruz'>Visão Geral</h2>
+        <h3 className='frequencia'>Frequência nas sub-zonas</h3>
         <div className='dados_cruzamento'>
           <div className="campo-futebol-cruzamento"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
           <div className='dados_cruzamento_campo'>
@@ -166,7 +166,7 @@ export default function Partidas() {
           <div className="detalhes-cruzamentos">
             <div className="infos-palmeiras">
               <div className='destaques-sep'>
-                <h3>Destaques SEP</h3>
+                <h3 className='texto-font'>Destaques SEP</h3>
                 { <ul>
                   {DestaquesPalmeirasArray[0] && DestaquesPalmeirasArray[0].map((destaque, index) => (
                     <li key={index} value={index}>
@@ -176,7 +176,7 @@ export default function Partidas() {
                 </ul>}
               </div>
               <div className='envolvidos-sep'>
-                <h3>Jogadores envolvidos SEP</h3>
+                <h3 className='texto-font'>Jogadores envolvidos SEP</h3>
                 <Chart
                   chartType="Bar"
                   width="100%"
@@ -186,7 +186,7 @@ export default function Partidas() {
                 />
               </div>
               <div className='desfechos-sep'>
-                <h3>Desfechos SEP</h3>
+                <h3 className='texto-font'>Desfechos SEP</h3>
                 <Chart
                   chartType="PieChart"
                   width="100%"
@@ -199,7 +199,7 @@ export default function Partidas() {
 
             <div className="infos-bragantino">
               <div className='destaques-red'>
-                <h3>Destaques RED</h3>
+                <h3 className='texto-font'>Destaques RED</h3>
                   <ul>
                     {DestaquesBragantinoArray[0] && DestaquesBragantinoArray[0].map((destaque, index) => (
                     <li key={index} value={index}>
@@ -209,7 +209,7 @@ export default function Partidas() {
                   </ul>
               </div>
               <div className='envolvidos-red'>
-                <h3>Jogadores envolvidos RED</h3>
+                <h3 className='texto-font'>Jogadores envolvidos RED</h3>
                 <Chart
                   chartType="Bar"
                   width="100%"
@@ -219,7 +219,7 @@ export default function Partidas() {
                 />
               </div>
               <div className='desfechos-red'>
-                <h3>Desfechos RED</h3>
+                <h3 className='texto-font'>Desfechos RED</h3>
                 <Chart
                   chartType="PieChart"
                   width="100%"
@@ -235,6 +235,8 @@ export default function Partidas() {
 
       <div className='visao-geral2-cruz'>
         <h2>Lances</h2>
+
+        <h3 className='textos-informacao-h3'>Lista de Cruzamento</h3>
         <div className="lista-lances-cruz" style={{ width: '95%' }}>
           {CruzamentosPalmeirasArray[0] && CruzamentosPalmeirasArray[0].map((cruzamento, index) => (
             BotaoCruzamento(cruzamento, index, imagemPalmeiras)

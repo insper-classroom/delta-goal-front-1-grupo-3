@@ -60,6 +60,8 @@
 }
 .frequencia{
     margin-left: 5%;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .campo-futebol-cruzamento img {
@@ -87,7 +89,7 @@
     height: 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     width: 100%;
-    margin-top: 40px;
+    margin-top: 0px;
 }
 
 .botao-cruzamento-container {
@@ -104,11 +106,28 @@
     width: 30%;
   }
 
+  .video-container-cruzamento{
+      height: 20%;
+    }
+    
 .cruzamento-info-string {
     margin-top: 25px;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 18px;
     margin-bottom: -35px;
 }
-.video-container-cruzamento{
-    height: 20%;
+
+.textos-informacao-h3 {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.titulo-h2-cruz {
+    margin-left: 5%;
+}
+
+.texto-font {
+    font-weight: bold;
+    font-size: 18px;
 }
