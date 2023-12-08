@@ -96,7 +96,8 @@ export default function Partidas() {
       <Header />
       <div className="container">
         <div className="visao-geral-cruz">
-        <h2>Visão Geral</h2>
+        <h1>Visão Geral</h1>
+        <h3 className='frequencia'>Frequência nas zonas</h3>
         <div className='dados_cruzamento'>
           <div className="campo-futebol"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
           <div className='dados_cruzamento_campo'>
