@@ -76,6 +76,30 @@ export default function Rupturas() {
     return null;
   };
 
+  const BotaoRuptura = (ruptura, index) => {
+    const buttonID = `${index + 1}`;
+    return (
+    <button
+      id={buttonID}
+      className={`button-site ${selectedRuptura === ruptura ? 'button-selected' : ''}`}
+      key={index}
+      value={index}
+      onClick={() => {
+        setSelectedRuptura({ ...ruptura, id: buttonID });
+      }}
+    >
+      <div className="botao-ruptura-container">
+        <div className='left-content'>
+          <span className="ruptura-instante">{`Ruptura #${(index + 1).toString().padStart(3, '0')}`}</span>
+        </div>
+        <div className='right-content'>
+          <span className="ruptura-instante">{ruptura.instante_ruptura} | {ruptura.desfecho} | Zona: {ruptura.zona_defesa}</span>
+        </div>
+      </div>
+    </button>
+      );
+    };
+
   return (
     <>
       <Header />
@@ -96,7 +120,6 @@ export default function Rupturas() {
 
       {selectedTeam ? (
         <>
-
           <div className='container'>
             <div className="visao-geral">
               <h2>RUPTURAS</h2>
@@ -134,25 +157,17 @@ export default function Rupturas() {
               </div>
             </div>
             </div>
-    
             <div className="visao-geral2">
               <h2>Lances</h2>
               <div className="lista-lances" style={{ width: '95%' }}>
                 {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-                  <button
-                    className={`button-site ${selectedRuptura === ruptura ? 'button-selected' : ''}`}
-                    key={index}
-                    value={index}
-                    onClick={() => {
-                      const selectedRuptura = rupturasArray[0][index];
-                      setSelectedRuptura(selectedRuptura);
-                    }}>
-                    {ruptura.inicio_ruptura + ' - ' + ruptura.zona_defesa + ' - ' + ruptura.zona_ataque}
-                  </button>
+                  BotaoRuptura(ruptura, index)
                 ))}
               </div>
-
-
+              {selectedRuptura && (
+              <div className="ruptura-info-string">
+                {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
+              </div>)}
               <div className="video-container"style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
                 <ReactPlayer
                   ref={playerRef}

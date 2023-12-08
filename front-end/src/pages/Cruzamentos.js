@@ -136,7 +136,7 @@ export default function Partidas() {
           <span className="cruzamento-instante">{`Cruzamento #${(index + 1).toString().padStart(3, '0')}`}</span>
         </div>
         <div className='right-content'>
-          <span className="cruzamento-instante">{cruzamento.instante_cruzamento} | {cruzamento.desfecho} Zona: {cruzamento.zona}</span>
+          <span className="cruzamento-instante">{cruzamento.instante_cruzamento} | {cruzamento.desfecho} | Zona: {cruzamento.zona}</span>
         </div>
       </div>
     </button>
