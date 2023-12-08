@@ -155,13 +155,13 @@ export default function Partidas() {
         <h3 className='frequencia'>Frequência nas sub-zonas</h3>
         <div className='dados_cruzamento'>
           <div className="campo-futebol-cruzamento"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
-          <div className='dados_cruzamento_campo'>
-            {/* {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
-        <div key={key} className="item">
+          <div className='dados_cruzamento_campo_cruzamento'>
+            {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
+        <div key={key} className="item_cruzamento">
           <span className="chave"> {key}:</span>
           <span className="valor">{value}%/</span>
-        </div>
-      ))} */}
+        </div> 
+      ))}
           </div>
           <div className="detalhes-cruzamentos">
             <div className="infos-palmeiras">
