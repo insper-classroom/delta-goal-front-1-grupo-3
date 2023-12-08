@@ -248,9 +248,9 @@ export default function Partidas() {
             url="https://www.youtube.com/watch?v=vqguX62PKFg"
             playing={isPlaying}
             controls
-            width="94.85%"
-            height="99%"
-            style={{ position: 'absolute', top: '55%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
+            width="95%"
+            height="91.4%"
+            style={{ position: 'absolute', top: '55%', left: '47.5%', transform: 'translate(-50%, -47%)', border: 'none', outline: 'none' }}
             onProgress={handleVideoProgress}
           />
         </div>
