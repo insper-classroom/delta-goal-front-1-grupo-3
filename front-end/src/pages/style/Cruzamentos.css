@@ -81,3 +81,31 @@
     flex-direction: row;
     align-items: center;
 }
+
+.lista-lances-cruz {
+    overflow-y: scroll;
+    height: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    margin-top: 40px;
+}
+
+.botao-cruzamento-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left-content {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    width: 30%;
+  }
+
+.cruzamento-info-string {
+    margin-top: 25px;
+    font-weight: bold;
+    margin-bottom: -35px;
+}
