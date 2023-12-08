@@ -247,7 +247,7 @@ export default function Partidas() {
           <div className="cruzamento-info-string">
             {`Cruzamento #${(selectedCruzamento.id).toString().padStart(3, '0')}`}
           </div>)}
-        <div className="video-container" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
+        <div className="video-container-cruzamento" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
           <ReactPlayer
             ref={playerRef}
             url="https://www.youtube.com/watch?v=vqguX62PKFg"
