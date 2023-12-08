@@ -183,3 +183,24 @@ export const fetchDesfechosCruzamentos = async (teamName) => {
       throw new Error(`Erro na requisição: ${error.message}`);
     }
   }
+
+  export const fetchrupturaPorcentagem = async (teamName) => {
+    try {
+        const response = await fetch(`https://sprint-deltago-5179309dcfcb.herokuapp.com/rupturas_campo/jogo/Palmeiras x Red Bull Bragantino/time/${teamName}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        redirect: 'follow',
+      });
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        throw new Error(`Erro ao buscar destaques: ${response.statusText}`);
+      }
+    } catch (error) {
+      throw new Error(`Erro na requisição: ${error.message}`);
+    }
+  }
