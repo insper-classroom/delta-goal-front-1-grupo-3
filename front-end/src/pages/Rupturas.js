@@ -228,6 +228,24 @@ export default function Rupturas() {
     
           <div className="visao-geral2-rupturas">
             <h2>Lances</h2>
+            <div>
+         <label htmlFor="zona">Zona:</label>
+            <select name="zona" id="zona">
+              <option value="todas">Todas</option>
+              <option value="1">1</option>
+              <option value="2">2</option>             
+            </select>
+            </div>
+
+            <div>
+            <label htmlFor="tipo">Tipo:</label>
+            <select name="tipo" id="tipo">
+              <option value="todas">Todas</option>
+              <option value="cruzamento">Cruzamento</option>
+              <option value="cruzamento-rasteiro">Cruzamento Rasteiro</option>
+              <option value="cruzamento-alto">Cruzamento Alto</option>
+            </select>
+            </div>
             <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
             <div className="lista-lances-rup" style={{ width: '95%' }}>
               {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
