@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './style/Rupturas.css';
-import { fetchDestaques, fetchLances, fetchDesfechos } from '../functions/Requisicoes.js';
+import { fetchDestaques, fetchLances, fetchDesfechos,fetchrupturaPorcentagem } from '../functions/Requisicoes.js';
 import Header from './Header';
 import { Chart } from "react-google-charts";
 import ReactPlayer from 'react-player';
@@ -11,6 +11,7 @@ export default function Rupturas() {
   const [desfechos, setDesfechos] = useState([]);
   const [selectedRuptura, setSelectedRuptura] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [porcentagemruptura, setPorcentagemruptura] = useState([]);
 
   const [videoStartTime, setVideoStartTime] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -37,6 +38,8 @@ export default function Rupturas() {
         setRupturas(rupturasData);
         const desfechosData = await fetchDesfechos(selectedTeam);
         setDesfechos(desfechosData);
+        const porcentagemData = await fetchrupturaPorcentagem(selectedTeam);
+        setPorcentagemruptura(porcentagemData);
       } catch (error) {
         console.log(error);
       }
@@ -97,8 +100,17 @@ export default function Rupturas() {
             <div className="visao-geral">
               <h2>RUPTURAS</h2>
               <div className="campo-futebol">
-                <img src="campo.png" alt="Campo de futebol" />
+                <img src="campo-ruptura.jpeg" alt="Campo de futebol" />
               </div>
+              <div className='dados_cruzamento_campo'>
+            {/* {JSON.stringify(porcentagemPalmeiras)} */}
+            {Object.entries(porcentagemruptura).map(([key, value]) => (
+        <div key={key} className="item">
+          <span className="chave"> {key}:</span>
+          <span className="valor">{value}%/</span>
+        </div>
+      ))}
+          </div>
               <div className="destaques">
                 <h2>Maior número de rupturas:</h2>
                 <ul>
