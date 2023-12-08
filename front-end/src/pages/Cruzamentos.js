@@ -94,12 +94,12 @@ export default function Partidas() {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="container-cruzamentos">
         <div className="visao-geral-cruz">
         <h1>Visão Geral</h1>
         <h3 className='frequencia'>Frequência nas zonas</h3>
         <div className='dados_cruzamento'>
-          <div className="campo-futebol"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
+          <div className="campo-futebol-cruzamento"><img src="campo-cruzamento.jpeg" alt="Campo de futebol" /></div>
           <div className='dados_cruzamento_campo'>
             {/* {JSON.stringify(porcentagemPalmeiras)} */}
             {Object.entries(porcentagemPalmeiras).map(([key, value]) => (
@@ -193,6 +193,18 @@ export default function Partidas() {
               }}>
               {cruzamento.instante_cruzamento}
             </button>
+          ))}
+          {CruzamentosBragantinoArray[0] && CruzamentosBragantinoArray[0].map((cruzamento, index) => (
+              <button 
+                className={`button-site ${selectedCruzamento === cruzamento ? 'button-selected' : ''}`}
+                key = {index}
+                value={index}
+                onClick={() => {
+                  const selectedCruzamento = CruzamentosBragantinoArray[0][index]
+                  setSelectedCruzamento(selectedCruzamento)
+                }}>
+                {cruzamento.instante_cruzamento}
+              </button>
           ))}
         </div>
         <div className="video-container" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
