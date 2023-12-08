@@ -228,7 +228,6 @@ export default function Rupturas() {
           </div>
     
           <div className="visao-geral2-rupturas">
-            <h2>Lances</h2>
             <div className="visao-geral2-rupturas">
       <h2>Lances</h2>
       <div>
@@ -275,7 +274,7 @@ export default function Rupturas() {
               url="https://www.youtube.com/watch?v=vqguX62PKFg"
               playing={isPlaying}
               controls
-              width="92.7%"
+              width="92.65%"
               height="84%"
               style={{ position: 'absolute', top: '50%', left: '46.35%', transform: 'translate(-50%, -52.5%)', border: 'none', outline: 'none' }}
               onProgress={handleVideoProgress}
