@@ -34,7 +34,7 @@
 
 /* Container para o vídeo */
 .video-container {
-    border: 2px solid #ccc; /* Borda para o vídeo */
+    border: 0px solid #ccc; /* Borda para o vídeo */
     padding: 10px; /* Espaçamento interno */
     height: 200px; /* Altura exemplo, ajuste conforme necessário */
 }

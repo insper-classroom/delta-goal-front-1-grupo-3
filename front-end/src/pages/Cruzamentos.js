@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { fetchLancesCruzamentos, fetchDestaquesCruzamentos, fetchCruzamentos, fetchDesfechosCruzamentos, fetchCruzamentosPorcentagem } from '../functions/Requisicoes.js';
 import { Chart } from "react-google-charts";
-import Header from './Header';
 import './style/Cruzamentos.css';
+import ReactPlayer from 'react-player';
+import Header from './Header';
 
 export default function Partidas() {
   const [lancesPalmeiras, setLancesPalmeiras] = useState([]);
@@ -14,8 +15,12 @@ export default function Partidas() {
   const [cruzamentosPalmeiras, setCruzamentosPalmeiras] = useState([]);
   const [cruzamentosBragantino, setCruzamentosBragantino] = useState([]);
   const [porcentagemPalmeiras, setPorcentagemPalmeiras] = useState([]);
-
   const [selectedCruzamento, setSelectedCruzamento] = useState(null);
+
+  const [videoStartTime, setVideoStartTime] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playerRef = useRef(null);
 
   const options = {
     legend: 'none',
@@ -33,9 +38,13 @@ export default function Partidas() {
     // ... other options as needed
   };
   
-  
-  
   const teams = ["Palmeiras", "Red Bull Bragantino"]
+
+  const handleVideoProgress = (state) => {
+    if (videoStartTime && state.playedSeconds >= videoStartTime + 10) {
+      setIsPlaying(false);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,6 +75,16 @@ export default function Partidas() {
     };
     fetchData();
   },[]);
+
+  useEffect(() => {
+    if (selectedCruzamento) {
+      const [hours, minutes, seconds] = selectedCruzamento.instante_cruzamento.split(':').map(Number);
+      const startTimeInSeconds = hours * 3600 + minutes * 60 + seconds - 5; // 5 segundos antes do início
+      setVideoStartTime(startTimeInSeconds);
+      setIsPlaying(true);
+      playerRef.current.seekTo(startTimeInSeconds);
+    }
+  }, [selectedCruzamento]);
 
   const CruzamentosPalmeirasArray = Object.values(cruzamentosPalmeiras);
   const CruzamentosBragantinoArray = Object.values(cruzamentosBragantino);
@@ -161,7 +180,7 @@ export default function Partidas() {
 
       <div className='visao-geral2'>
         <h2>Lances</h2>
-        <div className="lista-lances">
+        <div className="lista-lances" style={{ width: '95%' }}>
           {CruzamentosPalmeirasArray[0] && CruzamentosPalmeirasArray[0].map((cruzamento, index) => (
             <button 
               className={`button-site ${selectedCruzamento === cruzamento ? 'button-selected' : ''}`}
@@ -174,25 +193,18 @@ export default function Partidas() {
               {cruzamento.instante_cruzamento}
             </button>
           ))}
-          {CruzamentosBragantinoArray[0] && CruzamentosBragantinoArray[0].map((cruzamento, index) => (
-            <button 
-              className={`button-site ${selectedCruzamento === cruzamento ? 'button-selected' : ''}`}
-              key = {index}
-              value={index}
-              onClick={() => {
-                const selectedCruzamento = CruzamentosBragantinoArray[0][index]
-                setSelectedCruzamento(selectedCruzamento)
-              }}>
-              {cruzamento.instante_cruzamento}
-            </button>
-          ))}
         </div>
-
-        <div className="video-container">
-          <video controls>
-            <source src="path_to_your_video.mp4" type="video/mp4" />
-            Seu navegador não suporta vídeos.
-          </video>
+        <div className="video-container" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
+          <ReactPlayer
+            ref={playerRef}
+            url="https://www.youtube.com/watch?v=vqguX62PKFg"
+            playing={isPlaying}
+            controls
+            width="94.85%"
+            height="99%"
+            style={{ position: 'absolute', top: '50%', left: '47.5%', transform: 'translate(-50%, -45%)', border: 'none', outline: 'none' }}
+            onProgress={handleVideoProgress}
+          />
         </div>
       </div>
       </div>
