@@ -12,7 +12,8 @@ export default function Rupturas() {
   const [selectedRuptura, setSelectedRuptura] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [porcentagemruptura, setPorcentagemruptura] = useState([]);
-
+  const [selectedZona, setSelectedZona] = useState('');
+  const [selectedTipo, setSelectedTipo] = useState('');
   const [videoStartTime, setVideoStartTime] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -228,35 +229,46 @@ export default function Rupturas() {
     
           <div className="visao-geral2-rupturas">
             <h2>Lances</h2>
-            <div>
-         <label htmlFor="zona">Zona:</label>
-            <select name="zona" id="zona">
-                           {/* Cria as option a partir de rupturasArray */}
-              {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-                <option key={index} value={ruptura.zona_defesa}>{ruptura.zona_defesa}</option>
-              ))}
-            </select>
-            </div>
+            <div className="visao-geral2-rupturas">
+      <h2>Lances</h2>
+      <div>
+        <label htmlFor="zona">Zona:</label>
+        <select name="zona" id="zona" value={selectedZona} onChange={(e) => setSelectedZona(e.target.value)}>
+          <option value="">Todos</option>
+          {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
+            <option key={index} value={ruptura.zona_defesa}>{ruptura.zona_defesa}</option>
+          ))}
+        </select>
+      </div>
 
-            <div>
-            <label htmlFor="tipo">Tipo:</label>
-            <select name="tipo" id="tipo">
-            {/* Cria as option a partir de rupturasArray */}
-                            {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-                <option key={index} value={ruptura.desfecho}>{ruptura.desfecho}</option>
-              ))}
-            </select>
-            </div>
-            <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
-            <div className="lista-lances-rup" style={{ width: '95%' }}>
-              {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
-                BotaoRuptura(ruptura, index)
-              ))}
-            </div>
-            {selectedRuptura && (
-              <div className="ruptura-info-string">
-                {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
-              </div>)}
+      <div>
+        <label htmlFor="tipo">Tipo:</label>
+        <select name="tipo" id="tipo" value={selectedTipo} onChange={(e) => setSelectedTipo(e.target.value)}>
+          <option value="">Todos</option>
+          {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
+            <option key={index} value={ruptura.desfecho}>{ruptura.desfecho}</option>
+          ))}
+        </select>
+      </div>
+
+      <h3 className='textos-informacao-h3-rup'>Lista de Rupturas</h3>
+      <div className="lista-lances-rup" style={{ width: '95%' }}>
+        {rupturasArray[0] && rupturasArray[0]
+          .filter(ruptura => (
+            (selectedZona === '' || ruptura.zona_defesa === selectedZona) &&
+            (selectedTipo === '' || ruptura.desfecho === selectedTipo)
+          ))
+          .map((filteredRuptura, index) => (
+            BotaoRuptura(filteredRuptura, index)
+          ))}
+      </div>
+
+      {selectedRuptura && (
+        <div className="ruptura-info-string">
+          {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
+        </div>
+      )}
+    </div>
     
             <div className="video-container-rupturas" style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
               <ReactPlayer
