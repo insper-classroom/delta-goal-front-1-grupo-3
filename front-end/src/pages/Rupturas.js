@@ -121,9 +121,10 @@ export default function Rupturas() {
       {selectedTeam ? (
         <>
           <div className='container'>
-            <div className="visao-geral">
-              <h2>RUPTURAS</h2>
-              <div className="campo-futebol">
+            <div className="visao-gera_rupturas">
+              <h1 className='rupturas-title'>RUPTURAS</h1>
+              <h3 className='frequencia-rupturas'>Frequência nas zonas</h3>
+              <div className="campo-futebol-ruptura">
                 <img src="campo-ruptura.jpeg" alt="Campo de futebol" />
               </div>
               <div className='dados_cruzamento_campo'>
@@ -134,8 +135,8 @@ export default function Rupturas() {
         </div>
       ))}
           </div>
-            <div className="destaques-desfechos">
-              <div className="destaques">
+            <div className="destaques-desfechos-rupturas">
+              <div className="destaques-rupturas">
                 <h2>Maior número de rupturas:</h2>
                 <ul>
                   {destaquesArray[0] && destaquesArray[0].map((destaque, index) => (
@@ -145,30 +146,32 @@ export default function Rupturas() {
                   ))}
                 </ul>
               </div>
-              <div className="desfechos">
+              <div className="desfechos-rupturas">
                 <h2>Desfechos:</h2>
+                <div className='grafico-rupturas'>
                 <Chart
+                className='grafico-imagem-ruptura'
                   chartType="PieChart"
-                  width="100%"
-                  height="100%"
+                  width="120%"
+                  height="120%"
                   data={desfechos}
                   options={options}
                 />
+                </div>
               </div>
             </div>
             </div>
-            <div className="visao-geral2">
+    
+            <div className="visao-geral2-rupturas">
               <h2>Lances</h2>
               <div className="lista-lances" style={{ width: '95%' }}>
                 {rupturasArray[0] && rupturasArray[0].map((ruptura, index) => (
                   BotaoRuptura(ruptura, index)
                 ))}
               </div>
-              {selectedRuptura && (
-              <div className="ruptura-info-string">
-                {`Ruptura #${(selectedRuptura.id).toString().padStart(3, '0')}`}
-              </div>)}
-              <div className="video-container"style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
+
+
+              <div className="video-container-rupturas"style={{ maxWidth: '100%', margin: '0 auto', paddingTop: '25%', position: 'relative' }}>
                 <ReactPlayer
                   ref={playerRef}
                   url="https://www.youtube.com/watch?v=vqguX62PKFg"
